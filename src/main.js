@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './index/router'
 import store from './store'
+import ES6Promise from 'es6-promise'
+
+Vue.use(router)
+ES6Promise.polyfill()
 
 Vue.config.productionTip = false
 
