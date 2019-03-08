@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './index/router'
+import router from './router/'
 import store from './store'
 import ES6Promise from 'es6-promise'
 
