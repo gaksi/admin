@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <div class="page-header">오늘당장 관리자페이지</div>
+    <div class="page-header">Notice</div>
+    <p>관리자 페이지 첫번째 페이지엔 무엇이 들어가는 걸까</p>
   </div>
 </template>
 

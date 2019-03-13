@@ -1,16 +1,27 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import Constant from '../Constant'
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
+const state = {
+  currentView: 'AppLogin'
+}
 
-  },
-  mutations: {
+const getters = {
+}
 
-  },
-  actions: {
-
+const mutations = {
+  [Constant.LOGIN]: (state) => {
+    state.currentView = 'AppAdmin'
   }
+}
+
+const actions = {
+}
+
+export default new Vuex.Store({
+  state,
+  getters,
+  mutations,
+  actions
 })

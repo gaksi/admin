@@ -1,102 +1,40 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link :to="{ name: 'Home' }">Home</router-link>
-    </div>
-    <div id="container">
-      <app-nav />
-      <div id="content">
-        <router-view/>
-      </div>
-    </div>
+    <component :is="currentView"></component>
   </div>
 </template>
 <script>
-import AppNav from './components/AppNav'
+import AppAdmin from './components/Admin'
+import AppLogin from './components/Login'
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
-  components: {
-    AppNav
-  }
+  components: { AppLogin, AppAdmin },
+  computed: mapState([ 'currentView' ])
 }
 </script>
 <style lang="scss">
+
+  /* reset */
+  * { border: 0 none; box-sizing: border-box; margin:0; padding:0 }
+  dl, ul, ol, menu, li { list-style: none; }
+  blockquote, q { quotes: none; }
+  input, select, textarea, button { vertical-align: middle; }
+  button { border: 0 none; background-color: transparent; cursor: pointer; }
+  a { text-decoration: none; color: #000; }
+  i { font-style: normal; vertical-align:middle; }
+  a:active, a:hover { text-decoration: none; color:inherit; }
+  address, caption, cite, code, dfn, em, var { font-style: normal; font-weight: normal; }
+  .clearfix { *zoom:1 }
+  .clearfix:after { content:''; display:block; clear:both; }
+  /*.router-link-exact-active { color: blue; }
+  */
+
   body {
-    margin: 0;
-    font-family: Arial, 'Malgun Gothic', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: left;
-    font-size: 14px;
-    line-height: 1.4;
-    color: #2c3e50;
-  }
-  h1 {
-    margin: 20px;
-    font-size: 24px;
-
-    img {
-      vertical-align: middle;
-    }
-  }
-  h2 {
-    font-size: 18px;
-    margin: 0.6em 0;
-  }
-  h3 {
-    font-size: 16px;
-    margin: 0.6em 0;
-  }
-  h4 {
-    font-size: 14px;
-    margin: 0.6em 0;
-  }
-  p {
-    margin: 0.6em 0
-  }
-  ul {
-    padding: 0 20px;
-
-    ul {
-      padding-right: 0;
-    }
-  }
-  a {
-    color: inherit;
-  }
-  .router-link-exact-active {
-    color: blue;
-  }
-  #container::after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-  #nav {
-    float: left;
-    padding-left: 10px;
-
-    > ul {
-      margin-top: 0;
-    }
-  }
-  #content {
-    overflow: hidden;
-
-    h2:first-of-type {
-      margin-top: 0;
-    }
-  }
-  .item {
-    padding: 10px;
-    border: 1px solid #eee;
-    margin: 10px 0;
-  }
-  .child {
-    padding: 10px;
-  }
-  .action {
-    padding-top: 10px;
+    margin: 0; font-family: sans-serif;
+    font-size: 14px; font-weight: 400;
+    line-height: 1.5; color: #6c757d; text-align: left;
+    background-color: #fafbfe;
   }
 </style>
