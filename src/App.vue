@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-    <component :is="currentView"></component>
+    <router-view></router-view>
   </div>
 </template>
 <script>
-import AppAdmin from './components/Admin'
-import AppLogin from './components/Login'
-import { mapState } from 'vuex'
+
 
 export default {
-  name: 'App',
-  components: { AppLogin, AppAdmin },
-  computed: mapState([ 'currentView' ])
+  name: 'App'
 }
 </script>
 <style lang="scss">

@@ -31,34 +31,27 @@ const router = new Router({
       component: AppAdmin,
       meta: {
         requiresAuth: true
-      }
-    },
-    {
-      path: '/notice',
-      name: 'Notice',
-      component: Notice,
-      title: 'Notice',
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/FAQ',
-      name: 'FAQ',
-      component: FAQ,
-      title: 'FAQ',
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/Help',
-      name: 'Help',
-      component: Help,
-      title: 'Help',
-      meta: {
-        requiresAuth: true
-      }
+      },
+      children: [
+        {
+          path: '/notice',
+          name: 'Notice',
+          component: Notice,
+          title: 'Notice'
+        },
+        {
+          path: '/FAQ',
+          name: 'FAQ',
+          component: FAQ,
+          title: 'FAQ'
+        },
+        {
+          path: '/Help',
+          name: 'Help',
+          component: Help,
+          title: 'Help'
+        }
+      ]
     }
   ]
 })
@@ -70,18 +63,16 @@ router.onError((error) => {
     params: { message: 'route.onError handling' }
   })
 })
+
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!firebase.auth().currentUser) {
-      next({
-        path: '/login',
-        query: {
-          redirect: to.fullPath
-        }
-      })
-    } else {
-      next()
-    }
+  let currentUser = firebase.auth().currentUser
+  let requireAuth = to.matched.some(record => record.meta.requiresAuth)
+  if (!currentUser && requireAuth) {
+    next('login')
+  } else if (currentUser && !requireAuth) {
+    next('admin')
+  } else {
+    next()
   }
 })
 

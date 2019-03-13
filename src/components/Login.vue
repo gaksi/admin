@@ -47,7 +47,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
-          user => {
+          (user) => {
             this.$router.push('/admin')
             console.log('login success')
           })
