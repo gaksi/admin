@@ -64,16 +64,16 @@ router.onError((error) => {
   })
 })
 
-router.beforeEach((to, from, next) => {
-  let currentUser = firebase.auth().currentUser
-  let requireAuth = to.matched.some(record => record.meta.requiresAuth)
+/* router.beforeEach((to, from, next) => {
+  let currentUser = firebase.auth().currentUser // 로그인 하였는가
+  let requireAuth = to.matched.some(record => record.meta.requiresAuth) // 같은 경로로 반복 이동 하였을 때
   if (!currentUser && requireAuth) {
     next('login')
   } else if (currentUser && !requireAuth) {
-    next('admin')
+    next()
   } else {
     next()
   }
-})
+}) */
 
 export default router

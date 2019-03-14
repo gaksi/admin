@@ -40,18 +40,15 @@ export default {
 </script>
 <style>
   .gnb a {
-    color: #cedce4;
-    display: block;
-    padding: 15px 30px;
-    font-size: .9375rem;
-    position: relative;
-    -webkit-transition: all .4s;
+    color: #cedce4; display: block;
+    padding: 10px 30px; font-size: 14px;
+    position: relative; -webkit-transition: all .4s;
     transition: all .4s;
   }
   .gnb a:hover { color:#fff; }
   .gnb a.router-link-exact-active { color:#fff; }
   .icon-left { display:inline-block; margin:-2px 5px 0 0 ; font-size:12px; }
   .right-arrow {
-    position:absolute; top:20px; right:27px
+    position:absolute; top:15px; right:27px
   }
 </style>

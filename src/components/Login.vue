@@ -92,7 +92,7 @@ firebase.initializeApp(config)
   position:absolute; top:50%; left:50%; margin-left:-168.5px; margin-top:-125.5px;
  }
   img.ani-img {
-    opacity:0; margin-top:-122.5px
+    opacity:0; margin-top:-122px
   }
  .left-box:hover .ani-img {
    animation:bounce .3s 0s ;
@@ -112,7 +112,6 @@ firebase.initializeApp(config)
    position:absolute; left:1200px; top:-400px;
    animation: lightEffect2 1s .5s; background-color:rgba(255,255,255,.3)
  }
-
  @keyframes lightEffect1 {
    0% {left: -280px }
    100% {left: 1320px }
@@ -126,28 +125,28 @@ firebase.initializeApp(config)
    text-align:center; padding:45px 0 0;
  }
  .icon-login {
-   font-size: 100px; color:#5d70f1;
+   font-size: 100px; color:#4d7fee;
   }
- .tit-login { font-size:25px; color:#666; font-weight:lighter; }
+ .tit-login { font-size:25px; font-weight:lighter; }
  .log-form { margin:23px 50px 0 }
   input.ip-01 {
     display: block; width: 100%; margin-bottom:8px;
     border-radius: 5px; padding: 9px 15px;
     font-size: 13px; border: 1px solid #ccc;
     font-weight: 400; line-height: 1.5;
-    color: #777; background-color: #fff;
+    background-color: #fff;
   }
   .btn-login {
-    width:49%; border-radius:5px; background-color:#5d70f1;
+    width:49%; border-radius:5px; background-color:#4d7fee;
     color:#fff; padding:12px 0; text-align:center; margin-top:10px;
     cursor:pointer; font-size:15px; font-weight:600; margin-left:2%;
-    transition:all .3s; border:1px solid #5d70f1
+    transition:all .3s; border:1px solid #4d7fee
   }
   .btn-login:first-child {
     margin-left:0;
   }
   .btn-login:hover {
-    border:1px solid #5d70f1; background-color:#fff;
-    color:#5d70f1
+    border:1px solid #4d7fee; background-color:#fff;
+    color:#4d7fee
   }
 </style>

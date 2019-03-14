@@ -1,7 +1,42 @@
 <template>
   <div class="hello">
-    <div class="page-header">Notice</div>
-    <p>관리자 페이지 첫번째 페이지엔 무엇이 들어가는 걸까</p>
+    <div class="page-header"><h2 class="tit-con-layout">Notice</h2></div>
+    <div class="content-box">
+      <h3 class="tit-con-box">공자사항 목록</h3>
+      <table class="tb-normal">
+        <colgroup>
+          <col width="60px">
+          <col width="60px">
+          <col width="*">
+          <col width="150px">
+        </colgroup>
+        <thead>
+        <tr>
+          <th>구분</th>
+          <th>고정</th>
+          <th>제목</th>
+          <th>날짜</th>
+        </tr>
+        </thead>
+        <tbody class="notice-tbody">
+          <tr>
+            <td>가라로</td>
+            <td>일단뭐</td>
+            <td><a href="">라도넣</a></td>
+            <td>어보자</td>
+          </tr>
+          <tr>
+            <td>가라로</td>
+            <td>일단뭐</td>
+            <td><a href="">라도넣</a></td>
+            <td>어보자</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="btn-box">
+        <button type="button" class="btn-basic btn-notice-write"> 글쓰기 </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -10,8 +45,6 @@ export default {
   name: 'AppHome'
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style>
 
 </style>
