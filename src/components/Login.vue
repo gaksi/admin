@@ -48,7 +48,7 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           (user) => {
-            this.$router.push('/admin')
+            this.$router.push('/notice')
             console.log('login success')
           })
         .catch((error) => {

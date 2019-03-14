@@ -1,7 +1,7 @@
 <template>
   <ul class="gnb">
     <template v-for="(item, index) in items">
-      <li v-if="item.title" :key="index">
+      <li :key="index">
         <span v-if="item.children">
           {{ item.title }}
         </span>
@@ -32,6 +32,9 @@ export default {
       type: Number,
       default: 1
     }
+  },
+  mounted () {
+    console.log(this.items)
   }
 }
 </script>

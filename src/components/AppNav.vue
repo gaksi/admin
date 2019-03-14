@@ -4,7 +4,7 @@
       <img src="../assets/logo.png" alt="오늘당장 로고">
     </router-link>
     <nav-items
-      :items="$router.options.routes" />
+      :items="navItems" />
   </nav>
 </template>
 
@@ -16,8 +16,16 @@ export default {
   components: {
     NavItems
   },
-  mounted () {
-    console.log(this.$router.options.routes)
+  data: function () {
+    return {
+      navItems: []
+    }
+  },
+  created () {
+    let adminRoute = this.$router.options.routes.filter((item, index) => {
+      return item.name === 'Admin'
+    })
+    this.navItems = adminRoute[0].children
   }
 }
 </script>
