@@ -114,7 +114,7 @@ export default {
 
   .btn-box { text-align:right; margin-top:10px; margin-right:1px; }
   .btn-basic {
-    padding:5px 16px 7px; border-radius:3px;
+    padding:5px 16px 7px; border-radius:3px; font-weight:600;
     border:1px solid #4d7fee; background-color:#4d7fee; color:#fff;
   }
   .btn-basic:hover {

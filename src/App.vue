@@ -15,10 +15,10 @@ export default {
   * { border: 0 none; box-sizing: border-box; margin:0; padding:0 }
   dl, ul, ol, menu, li { list-style: none; }
   blockquote, q { quotes: none; }
-  input, select, textarea, button { vertical-align: middle; }
+  input, select, textarea, button { vertical-align: middle; transition:all .2s; }
   button {
-    border: 0 none; background-color: transparent;
-    cursor: pointer; transition:all .2s; }
+    border: 0 none; background-color: transparent; cursor: pointer;
+  }
   a { text-decoration: none; color: #000; transition:all .2s; }
   i { font-style: normal; vertical-align:middle; }
   a:active, a:hover { text-decoration: none; color:inherit; }

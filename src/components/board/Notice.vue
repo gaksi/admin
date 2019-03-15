@@ -19,8 +19,11 @@
         </tr>
         </thead>
         <tbody class="notice-tbody">
-          <tr>
-            <td>{{}}</td>
+          <tr v-for="list in noticeList.notice" :key="list.id">
+            <td>{{ list.id }}</td>
+            <td>{{ list.insertId }}</td>
+            <td>{{ list.title }}</td>
+            <td>{{ list.notice_time }}</td>
           </tr>
         </tbody>
       </table>
@@ -37,18 +40,26 @@ export default {
   name: 'AppHome',
   data: function () {
     return {
-      target_notice: { id: 0, title: '', content: '', notice_time: 0 },
+      target_notice: { id: 0, title: '', content: '', notice_time: 0, insertId: 0 },
       noticeList: {
         pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, notice: []
       }
     }
   },
+  created () {
+    this.fetchNotice()
+  },
   methods: {
-    /*    fetchNotice: function () {
-      this.$axios.get(CONF.FETCH, {
-        params
-      })
-    } */
+    fetchNotice: function () {
+      this.$axios.post(CONF.FETCH, { page: this.noticeList.pageno })
+        .then((response) => {
+          this.noticeList.notice = response.data
+        })
+        .catch((ex) => {
+          console.log('fetchContacts failed', ex)
+          this.noticeList.notice = []
+        })
+    }
   }
 
 }

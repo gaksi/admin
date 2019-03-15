@@ -7,7 +7,7 @@
         </span>
         <router-link v-else
           :to="{ name: item.name }">
-          <i class="xi-command icon-left"></i> {{ item.title }}
+          <i class="xi-night icon-left"></i> {{ item.title }}
           <i class="xi-angle-right-min right-arrow"></i>
         </router-link>
         <nav-items v-if="item.children"
@@ -32,9 +32,6 @@ export default {
       type: Number,
       default: 1
     }
-  },
-  mounted () {
-    console.log(this.items)
   }
 }
 </script>
@@ -43,18 +40,19 @@ export default {
   .tit-nav {
     padding:0 30px; margin-bottom:10px; letter-spacing: .05em;
     pointer-events: none; cursor: default;
-    font-size: 12px; text-transform: uppercase;
+    font-size: 11px; text-transform: uppercase;
     color: #cedce4; font-weight: 700; display:block;
   }
   .gnb a {
     color: #cedce4; display: block;
     padding: 7.5px 30px; font-size: 16px;
-    position: relative; -webkit-transition: all .4s;
-    transition: all .4s;
+    position: relative;
   }
   .gnb a:hover { color:#fff; }
+  .gnb a:hover .icon-left { transform:rotate(360deg); transition:all .5s }
   .gnb a.router-link-exact-active { color:#fff; }
-  .icon-left { display:inline-block; margin:-2px 5px 0 0 ; font-size:12px; }
+  .icon-left { display:inline-block; margin:-5px 5px 0 0 ; font-size:12px; }
+
   .right-arrow {
     position:absolute; top:12px; right:27px
   }
