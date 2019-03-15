@@ -51,8 +51,8 @@ export default {
     box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
   }
   header h1 {
-    height: 70px; line-height:70px;
-    font-size:16px; font-weight:500;
+    height: 70px; line-height:70px; color:#4d7fee;
+    font-size:16px; font-weight:600;
   }
   .content-layout-in {
     width: 100%; padding-right: 15px; padding-left: 15px;

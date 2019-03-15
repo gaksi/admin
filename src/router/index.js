@@ -1,10 +1,26 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import AppAdmin from '../components/Admin'
 import AppLogin from '../components/Login'
+
+import Board from '../components/board/'
 import Notice from '../components/board/Notice'
-import FAQ from '../components/board/FAQ'
-import Help from '../components/board/Help'
+
+import Info from '../components/info/'
+import FAQ from '../components/info/FAQ'
+import Help from '../components/info/Help'
+
+import Manage from '../components/manage/'
+import Account from '../components/manage/Account'
+import Menu from '../components/manage/Menu'
+
+import Pay from '../components/pay/'
+import Payment from '../components/pay/Payment'
+
+import User from '../components/user/'
+import UserInfo from '../components/user/UserInfo'
+
 import firebase from 'firebase'
 
 Vue.use(Router)
@@ -32,24 +48,94 @@ const router = new Router({
       meta: {
         requiresAuth: true
       },
+      redirect: { name: 'Board' },
       children: [
         {
-          path: '/notice',
-          name: 'Notice',
-          component: Notice,
-          title: 'Notice'
+          path: '/board',
+          name: 'Board',
+          component: Board,
+          title: 'Board',
+          redirect: { name: 'Notice' },
+          children: [
+            {
+              path: '/notice',
+              name: 'Notice',
+              component: Notice,
+              title: 'Notice'
+            }
+          ]
         },
         {
-          path: '/FAQ',
-          name: 'FAQ',
-          component: FAQ,
-          title: 'FAQ'
+          path: '/info',
+          name: 'Info',
+          component: Info,
+          title: 'Info',
+          redirect: { name: 'FAQ' },
+          children: [
+            {
+              path: '/FAQ',
+              name: 'FAQ',
+              component: FAQ,
+              title: 'FAQ'
+            },
+            {
+              path: '/Help',
+              name: 'Help',
+              component: Help,
+              title: 'Help'
+            }
+          ]
         },
         {
-          path: '/Help',
-          name: 'Help',
-          component: Help,
-          title: 'Help'
+          path: '/manage',
+          name: 'Manage',
+          component: Manage,
+          title: 'Manage',
+          redirect: { name: 'Account' },
+          children: [
+            {
+              path: '/account',
+              name: 'Account',
+              component: Account,
+              title: 'Account'
+            },
+            {
+              path: '/menu',
+              name: 'Menu',
+              component: Menu,
+              title: 'Menu'
+            }
+          ]
+        },
+        {
+          path: '/pay',
+          name: 'Pay',
+          component: Pay,
+          title: 'Pay',
+          redirect: { name: 'Payment' },
+          children: [
+            {
+              path: '/payment',
+              name: 'Payment',
+              component: Payment,
+              title: 'Payment'
+            }
+          ]
+        },
+        {
+          path: '/user',
+          name: 'User',
+          component: User,
+          title: 'User',
+          redirect: { name: 'UserInfo' },
+          children: [
+            {
+              path: '/userInfo',
+              name: 'UserInfo',
+              component: UserInfo,
+              title: 'UserInfo'
+            }
+          ]
         }
       ]
     }

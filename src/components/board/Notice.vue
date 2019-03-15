@@ -32,15 +32,23 @@
 </template>
 
 <script>
+import CONF from '../../Config.js'
 export default {
   name: 'AppHome',
   data: function () {
-    return { noticeList: [] }
+    return {
+      target_notice: { id: 0, title: '', content: '', notice_time: 0 },
+      noticeList: {
+        pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, notice: []
+      }
+    }
   },
   methods: {
-    fetchNoticeList: function () {
-
-    }
+    /*    fetchNotice: function () {
+      this.$axios.get(CONF.FETCH, {
+        params
+      })
+    } */
   }
 
 }

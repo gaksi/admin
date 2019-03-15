@@ -2,7 +2,7 @@
   <ul class="gnb">
     <template v-for="(item, index) in items">
       <li :key="index">
-        <span v-if="item.children">
+        <span v-if="item.children" class="tit-nav">
           {{ item.title }}
         </span>
         <router-link v-else
@@ -39,9 +39,16 @@ export default {
 }
 </script>
 <style>
+  .gnb { margin-bottom:30px; }
+  .tit-nav {
+    padding:0 30px; margin-bottom:10px; letter-spacing: .05em;
+    pointer-events: none; cursor: default;
+    font-size: 12px; text-transform: uppercase;
+    color: #cedce4; font-weight: 700; display:block;
+  }
   .gnb a {
     color: #cedce4; display: block;
-    padding: 10px 30px; font-size: 14px;
+    padding: 7.5px 30px; font-size: 16px;
     position: relative; -webkit-transition: all .4s;
     transition: all .4s;
   }
@@ -49,6 +56,6 @@ export default {
   .gnb a.router-link-exact-active { color:#fff; }
   .icon-left { display:inline-block; margin:-2px 5px 0 0 ; font-size:12px; }
   .right-arrow {
-    position:absolute; top:15px; right:27px
+    position:absolute; top:12px; right:27px
   }
 </style>

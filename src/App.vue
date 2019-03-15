@@ -5,7 +5,6 @@
 </template>
 <script>
 
-
 export default {
   name: 'App'
 }
@@ -17,8 +16,10 @@ export default {
   dl, ul, ol, menu, li { list-style: none; }
   blockquote, q { quotes: none; }
   input, select, textarea, button { vertical-align: middle; }
-  button { border: 0 none; background-color: transparent; cursor: pointer; }
-  a { text-decoration: none; color: #000; }
+  button {
+    border: 0 none; background-color: transparent;
+    cursor: pointer; transition:all .2s; }
+  a { text-decoration: none; color: #000; transition:all .2s; }
   i { font-style: normal; vertical-align:middle; }
   a:active, a:hover { text-decoration: none; color:inherit; }
   address, caption, cite, code, dfn, em, var { font-style: normal; font-weight: normal; }
