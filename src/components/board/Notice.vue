@@ -37,7 +37,7 @@
 <script>
 import CONF from '../../Config.js'
 export default {
-  name: 'AppHome',
+  name: 'Notice',
   data: function () {
     return {
       target_notice: { id: 0, title: '', content: '', notice_time: 0, insertId: 0 },
@@ -56,7 +56,7 @@ export default {
           this.noticeList.notice = response.data
         })
         .catch((ex) => {
-          console.log('fetchContacts failed', ex)
+          console.log('fetchNotice failed', ex)
           this.noticeList.notice = []
         })
     }

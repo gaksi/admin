@@ -6,8 +6,9 @@ import ES6Promise from 'es6-promise'
 import axios from 'axios'
 
 Vue.use(router)
+
 ES6Promise.polyfill()
-Vue.prototype.$axios = axios;
+Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
 new Vue({

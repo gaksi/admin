@@ -140,7 +140,7 @@ firebase.initializeApp(config)
     width:49%; border-radius:5px; background-color:#4d7fee;
     color:#fff; padding:12px 0; text-align:center; margin-top:10px;
     cursor:pointer; font-size:15px; font-weight:600; margin-left:2%;
-    border:1px solid #4d7fee
+    border:1px solid #4d7fee; box-shadow: 0 2px 6px 0 rgba(77, 127, 238, 0.5);
   }
   .btn-login:first-child {
     margin-left:0;
