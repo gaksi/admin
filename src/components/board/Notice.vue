@@ -20,16 +20,7 @@
         </thead>
         <tbody class="notice-tbody">
           <tr>
-            <td>가라로</td>
-            <td>일단뭐</td>
-            <td><a href="">라도넣</a></td>
-            <td>어보자</td>
-          </tr>
-          <tr>
-            <td>가라로</td>
-            <td>일단뭐</td>
-            <td><a href="">라도넣</a></td>
-            <td>어보자</td>
+            <td>{{}}</td>
           </tr>
         </tbody>
       </table>
@@ -42,7 +33,16 @@
 
 <script>
 export default {
-  name: 'AppHome'
+  name: 'AppHome',
+  data: function () {
+    return { noticeList: [] }
+  },
+  methods: {
+    fetchNoticeList: function () {
+
+    }
+  }
+
 }
 </script>
 <style>
