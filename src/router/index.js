@@ -21,6 +21,8 @@ import Payment from '../components/pay/Payment'
 import User from '../components/user/'
 import UserInfo from '../components/user/UserInfo'
 
+import NotFoundPage from '@/views/NotFoundPage'
+
 import firebase from 'firebase'
 
 Vue.use(Router)
@@ -30,11 +32,12 @@ const router = new Router({
   routes: [
     {
       path: '*',
-      redirect: '/login'
+      name: 'NotFoundPage',
+      component: NotFoundPage
     },
     {
       path: '/',
-      redirect: '/login'
+      redirect: { name: 'Admin' }
     },
     {
       path: '/login',
@@ -150,16 +153,19 @@ router.onError((error) => {
   })
 })
 
-/* router.beforeEach((to, from, next) => {
-  let currentUser = firebase.auth().currentUser // 로그인 하였는가
+router.beforeEach((to, from, next) => {
   let requireAuth = to.matched.some(record => record.meta.requiresAuth) // 같은 경로로 반복 이동 하였을 때
-  if (!currentUser && requireAuth) {
-    next('login')
-  } else if (currentUser && !requireAuth) {
-    next()
-  } else {
-    next()
-  }
-}) */
+
+  // https://firebase.google.com/docs/auth/web/manage-users
+  firebase.auth().onAuthStateChanged(user => {
+    if (!user && requireAuth) {
+      next({ name: 'Login' })
+    } else if (user && !requireAuth) {
+      next({ name: 'Admin' })
+    } else {
+      next()
+    }
+  })
+})
 
 export default router

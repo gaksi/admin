@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     fetchNotice: function () {
-      this.$axios.post(CONF.FETCH, { page: this.noticeList.pageno })
+      this.$axios.post(CONF.NOTICE_FETCH, { page: this.noticeList.pageno })
         .then((response) => {
           this.noticeList.notice = response.data
         })

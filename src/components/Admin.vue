@@ -4,7 +4,8 @@
   <div class="content-layout">
     <header>
       <h1>오늘당장 관리자페이지</h1>
-      <router-link :to="{ name: 'login' }" class="logout btn-basic" @click="logout">Logout</router-link>
+      <!-- https://github.com/vuejs/vue-router/issues/800 -->
+      <router-link :to="{ name: 'Login' }" class="logout btn-basic" @click.native="logout">Logout</router-link>
     </header>
     <div class="content-layout-in">
       <router-view/>
