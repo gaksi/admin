@@ -1,8 +1,8 @@
 <template>
   <ul class="gnb">
     <template v-for="(item, index) in items">
-      <li :key="index">
-        <span v-if="item.children" class="tit-nav">
+      <li v-if="item.title" :key="index">
+        <span v-if="item.children && !item.sub" class="tit-nav">
           {{ item.title }}
         </span>
         <router-link v-else
@@ -51,6 +51,8 @@ export default {
   .gnb a:hover { color:#fff; }
   .gnb a:hover .icon-left { transform:rotate(360deg); transition:all .5s }
   .gnb a.router-link-exact-active { color:#fff; }
+  .gnb a.router-link-active { color:#fff; }
+  .gnb a.act { color:#fff; }
   .icon-left { display:inline-block; margin:-5px 5px 0 0 ; font-size:12px; }
 
   .right-arrow {

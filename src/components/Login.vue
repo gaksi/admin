@@ -130,12 +130,12 @@ firebase.initializeApp(config)
  .tit-login { font-size:25px; font-weight:lighter; }
  .log-form { margin:23px 50px 0 }
   input.ip-01 {
-    display: block; width: 100%; margin-bottom:8px;
-    border-radius: 5px; padding: 9px 15px;
-    font-size: 13px; border: 1px solid #ccc;
-    font-weight: 400; line-height: 1.5;
-    background-color: #fff;
-  }
+       display: block; width: 100%; margin-bottom:8px;
+       border-radius: 5px; padding: 9px 15px;
+       font-size: 13px; border: 1px solid #ccc;
+       font-weight: 400; line-height: 1.5;
+       background-color: #fff;
+     }
   .btn-login {
     width:49%; border-radius:5px; background-color:#4d7fee;
     color:#fff; padding:12px 0; text-align:center; margin-top:10px;

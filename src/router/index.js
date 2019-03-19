@@ -1,25 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import AppAdmin from '../components/Admin'
-import AppLogin from '../components/Login'
+import AppAdmin from '@/components/Admin'
+import AppLogin from '@/components/Login'
 
-import Board from '../components/board/'
-import Notice from '../components/board/Notice'
+import Board from '@/components/board/'
+import Notice from '@/components/board/Notice/index'
+import NoticeForm from '@/components/board/Notice/NoticeForm'
+import NoticeList from '@/components/board/Notice/NoticeList'
 
-import Info from '../components/info/'
-import FAQ from '../components/info/FAQ'
-import Help from '../components/info/Help'
+import Info from '@/components/info/'
+import FAQ from '@/components/info/FAQ'
+import Help from '@/components/info/Help'
 
-import Manage from '../components/manage/'
-import Account from '../components/manage/Account'
-import Menu from '../components/manage/Menu'
+import Manage from '@/components/manage/'
+import Account from '@/components/manage/Account'
+import Menu from '@/components/manage/Menu'
 
-import Pay from '../components/pay/'
-import Payment from '../components/pay/Payment'
+import Pay from '@/components/pay/'
+import Payment from '@/components/pay/Payment'
 
-import User from '../components/user/'
-import UserInfo from '../components/user/UserInfo'
+import User from '@/components/user/'
+import UserInfo from '@/components/user/UserInfo'
 
 import NotFoundPage from '@/views/NotFoundPage'
 
@@ -64,7 +66,21 @@ const router = new Router({
               path: '/notice',
               name: 'Notice',
               component: Notice,
-              title: 'Notice'
+              title: 'Notice',
+              sub: true,
+              redirect: { name: 'NoticeList' },
+              children: [
+                {
+                  path: '/notice/noticeList',
+                  name: 'NoticeList',
+                  component: NoticeList
+                },
+                {
+                  path: '/notice/noticeForm',
+                  name: 'NoticeForm',
+                  component: NoticeForm
+                }
+              ]
             }
           ]
         },
