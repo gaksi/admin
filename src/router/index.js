@@ -8,6 +8,7 @@ import Board from '@/components/board/'
 import Notice from '@/components/board/Notice/index'
 import NoticeForm from '@/components/board/Notice/NoticeForm'
 import NoticeList from '@/components/board/Notice/NoticeList'
+import NoticeRead from '@/components/board/Notice/NoticeRead'
 
 import Info from '@/components/info/'
 import FAQ from '@/components/info/FAQ'
@@ -79,6 +80,11 @@ const router = new Router({
                   path: '/notice/noticeForm',
                   name: 'NoticeForm',
                   component: NoticeForm
+                },
+                {
+                  path: '/notice/noticeRead',
+                  name: 'NoticeRead',
+                  component: NoticeRead
                 }
               ]
             }

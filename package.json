@@ -11,6 +11,7 @@
     "axios": "^0.18.0",
     "es6-promise": "^4.2.6",
     "firebase": "^5.8.6",
+    "moment": "^2.24.0",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
     "vuejs-paginate": "^2.1.0",
