@@ -45,19 +45,11 @@ export default {
   name: 'Notice',
   computed: {
     ...mapState([ 'mode', 'noticeList' ]),
-    noticeData: function () {
+    notices: function () {
       console.log(this.noticeList.notices.resData)
       return this.noticeList.notices.resData
-    },
-    notices: () => {
-      /* console.log(this.noticeData())
-      for (let i = 0; i < this.noticeData.length; i++) {
-        this.noticeData[i].title = decodeURIComponent(this.noticeData[i].title)
-        const timestemp = this.noticeData[i].notice_time * 1000
-        const date = new Date(timestemp)
-        this.noticeData[i].notice_time = moment(date, 'YY-MM-DD')
-      }
-      return this.noticeData */
+    }
+    /*    notices: () => {
       Vue.nextTick()
         .then(() => {
           setTimeout(() => {
@@ -69,24 +61,10 @@ export default {
             })
           })
         })
-    }
+    } */
   },
   mounted: function () {
     this.$store.dispatch(Constant.FETCH_NOTICE, { pageno: 0 })
-    /*    const arrObj = [
-      {
-        title: 'title',
-        contents: 'content'
-      },
-      {
-        title: 'title2',
-        contents: 'content2'
-      }
-    ]
-    arrObj.map((item) => {
-      item.title = 'newTitle'
-      item.contents = 'newContents'
-    }) */
   }
 }
 </script>
