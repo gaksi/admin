@@ -187,8 +187,8 @@ export default {
     color:#4d7fee; background-color:#fff;
   }
   .btn-basic-big {
-    padding: 10px 0 12px; width: 190px; text-align: center;
-    border-radius: 6px; font-weight: 600; border: 1px solid #4d7fee;
+    padding: 8px 0 10px; width: 190px; text-align: center;
+    border-radius: 3px; font-weight: 600; border: 1px solid #4d7fee;
     background-color: #4d7fee; color: #fff;
     -webkit-box-shadow: 0 2px 6px 0 rgba(77, 127, 238, 0.5);
     box-shadow: 0 2px 6px 0 rgba(77, 127, 238, 0.5);
