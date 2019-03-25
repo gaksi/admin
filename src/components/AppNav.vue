@@ -54,7 +54,7 @@ nav:hover .star-box { opacity:1; }
 .star9 { left: 215px; top: 792px; width: 12px; height: 12px; opacity: 0; animation:starBlink01 4.6s .6s infinite alternate }
 .star10 { left: 177px; top: 36px; width: 20px; height: 20px; opacity: 0; animation:starBlink02 6s 4s infinite alternate }
 .star11 { left: 10px; top: 206px; width: 16px; height: 16px; opacity: 0; animation:starBlink02 4s 2.5s infinite alternate }
-.star12 { left: 153px; top: 469px; width: 14px; height: 14px; opacity: 0; animation:starBlink02 5s 1s infinite alternate }
+.star12 { left: 153px; top: 500px; width: 13px; height: 13px; opacity: 0; animation:starBlink02 5s 1s infinite alternate }
 .star13 { left: 130px; top: 868px; width: 20px; height: 20px; opacity: 0; animation:starBlink02 1.6s 3.5s infinite alternate }
 .star14 { left: 46px; top: 76px; width: 14px; height: 14px; opacity: 0; animation:starBlink03 2.6s .6s infinite alternate }
 .star15 { left: 209px; top: 156px; width: 14px; height: 14px; opacity: 0; animation:starBlink03 2.1s 1.6s infinite alternate }
@@ -70,7 +70,7 @@ nav:hover .star-box { opacity:1; }
 }
 @keyframes starBlink02 {
   0% { opacity: 0; }
-  100% { opacity: .7; }
+  100% { opacity: .6; }
 }
 @keyframes starBlink03 {
   0% { opacity: 0; }

@@ -8,7 +8,9 @@
       <router-link :to="{ name: 'Login' }" class="logout btn-basic" @click.native="logout">Logout</router-link>
     </header>
     <div class="content-layout-in">
-      <router-view/>
+      <transition name="flip" mode="out-in">
+        <router-view/>
+      </transition>
     </div>
   </div>
   </div>
@@ -39,6 +41,16 @@ export default {
 </script>
 
 <style>
+  .flip-enter-active {
+    transition: all .3s ease-in-out;
+  }
+  .flip-leave-active {
+    transition: all .3s ease-in-out;
+  }
+  .flip-enter, .flip-leave-to {
+    transform: translateY(10px);
+    opacity: 0;
+  }
   nav {
     width: 250px; position: fixed; top: 0; bottom: 0;
     background: linear-gradient(135deg, #13b7e4 0 , #4d7fee 45%, #8b36f1 85%);

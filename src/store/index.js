@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import CONF from '../Config'
 import axios from 'axios'
 import Constant from '../Constant'
+import moment from 'moment'
 Vue.use(Vuex)
 
 const state = {
@@ -14,6 +15,15 @@ const state = {
 }
 
 const getters = {
+  doneNotice: state => {
+    state.noticeList.notices.map((item) => {
+      item.title = unescape(item.title)
+      const timestemp = item.notice_time * 1000
+      const date = new Date(timestemp)
+      item.notice_time = moment(date).format('YY-MM-DD')
+    })
+    return state.noticeList.notices
+  }
 }
 
 const mutations = {
@@ -27,7 +37,7 @@ const actions = {
     axios.post(CONF.FETCH_NOTICE, {
       page: payload.pageno
     }).then((response) => {
-      context.commit(Constant.FETCH_NOTICE, { notices: response.data })
+      context.commit(Constant.FETCH_NOTICE, { notices: response.data.resData })
     }).catch((err) => {
       console.log(err)
     })

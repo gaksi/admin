@@ -37,7 +37,6 @@
 
 <script>
 import Constant from '@/Constant'
-import Vue from 'vue'
 import moment from 'moment'
 import { mapState } from 'vuex'
 
@@ -46,22 +45,9 @@ export default {
   computed: {
     ...mapState([ 'mode', 'noticeList' ]),
     notices: function () {
-      console.log(this.noticeList.notices.resData)
-      return this.noticeList.notices.resData
+      console.log(this.$store.getters)
+      return this.$store.getters.doneNotice
     }
-    /*    notices: () => {
-      Vue.nextTick()
-        .then(() => {
-          setTimeout(() => {
-            return this.noticeData.map((item) => {
-              item.title = decodeURIComponent(item.title)
-              const timestemp = item.notice_time * 1000
-              const date = new Date(timestemp)
-              item.notice_time = moment(date, 'YY-MM-DD')
-            })
-          })
-        })
-    } */
   },
   mounted: function () {
     this.$store.dispatch(Constant.FETCH_NOTICE, { pageno: 0 })
