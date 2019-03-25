@@ -24,8 +24,10 @@
       </div>
       <div class="form-group">
         <h4><label for="notice-contents">내용</label></h4>
-        <textarea id="notice-contents" class="txt-area02" cols="30" rows="10"
-                  v-model="notice.content"></textarea>
+        <vue-editor v-model="notice.content"
+                    :editorToolbar="customToolbar"
+                    id="notice-contents"
+        ></vue-editor>
       </div>
       <div class="btn-box">
         <router-link :to="{ name:'NoticeList' }" class="btn-basic btn-notice-list"> 목록 </router-link>
@@ -39,12 +41,21 @@
 <script>
 import Constant from '@/Constant'
 import { mapState } from 'vuex'
+import { VueEditor } from 'vue2-editor'
 
 export default {
   name: 'NoticeForm',
+  components: {
+    VueEditor
+  },
   data () {
     return {
-      fixed: ''
+      fixed: '',
+      customToolbar: [
+        ['bold', 'underline'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{ 'color': [] }], [ 'link' ]
+      ]
     }
   },
   computed: {

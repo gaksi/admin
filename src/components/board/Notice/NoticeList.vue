@@ -37,7 +37,6 @@
 
 <script>
 import Constant from '@/Constant'
-import moment from 'moment'
 import { mapState } from 'vuex'
 
 export default {
@@ -45,7 +44,6 @@ export default {
   computed: {
     ...mapState([ 'mode', 'noticeList' ]),
     notices: function () {
-      console.log(this.$store.getters)
       return this.$store.getters.doneNotice
     }
   },

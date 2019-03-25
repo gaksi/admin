@@ -1,4 +1,4 @@
-var BASE_URL = '/api'
+const BASE_URL = '/api'
 
 export default {
   PAGESIZE: 5,
