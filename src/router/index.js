@@ -82,7 +82,7 @@ const router = new Router({
                   component: NoticeForm
                 },
                 {
-                  path: '/notice/noticeRead',
+                  path: '/notice/:no',
                   name: 'NoticeRead',
                   component: NoticeRead
                 }

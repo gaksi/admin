@@ -38,9 +38,21 @@ const actions = {
       page: payload.pageno
     }).then((response) => {
       context.commit(Constant.FETCH_NOTICE, { notices: response.data.resData })
+      return 0
+    }).then((response) => {
+      console.log(response)
     }).catch((err) => {
       console.log(err)
     })
+  },
+  [Constant.FETCH_ONE_NOTICE]: (context, payload) => {
+    /*axios.post(CONF.FETCH_ONE_NOTICE, {
+      page: payload.id
+    }).then((response) => {
+      context.commit(Constant.FETCH_ONE_NOTICE, { notice: response.data.resData })
+    }).catch((err) => {
+      console.log(err)
+    })*/
   },
   [Constant.EDIT_NOTICE]: (context) => {
     const currentPageNo = context.state.noticeList.pageno

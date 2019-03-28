@@ -24,7 +24,8 @@ export default {
         ['bold', 'underline'],
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
         [{ 'color': [] }], [ 'link' ]
-      ]
+      ],
+      content: ''
     }
   }
 }

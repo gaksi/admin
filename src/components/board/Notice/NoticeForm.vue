@@ -28,6 +28,7 @@
                     :editorToolbar="customToolbar"
                     id="notice-contents"
         ></vue-editor>
+        <div>{{ notice.content }}</div>
       </div>
       <div class="btn-box">
         <router-link :to="{ name:'NoticeList' }" class="btn-basic btn-notice-list"> 목록 </router-link>
@@ -53,7 +54,6 @@ export default {
       fixed: '',
       customToolbar: [
         ['bold', 'underline'],
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
         [{ 'color': [] }], [ 'link' ]
       ]
     }

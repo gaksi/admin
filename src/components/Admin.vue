@@ -3,7 +3,7 @@
   <app-nav />
   <div class="content-layout">
     <header>
-      <h1>오늘당장 관리자페이지</h1>
+      <h1>RightAway Admin Page</h1>
       <!-- https://github.com/vuejs/vue-router/issues/800 -->
       <router-link :to="{ name: 'Login' }" class="logout btn-basic" @click.native="logout">Logout</router-link>
     </header>
@@ -64,8 +64,8 @@ export default {
     box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
   }
   header h1 {
-    height: 70px; line-height:70px; color:#708fd4;
-    font-size:16px; font-weight:600;
+    height: 70px; line-height:70px; color: #3177a8;
+    font-size:16px; font-weight:600; margin-left:2px;
   }
   .content-layout-in {
     width: 100%; padding-right: 15px; padding-left: 15px;
@@ -150,10 +150,11 @@ export default {
     font-size: 12px; padding:2px 10px;
   }
 
-  .tb-normal td a {
+  .tb-normal td button {
     padding: 10px 5px; display:block; font-size:14px; min-height:36px;
+    cursor: pointer; text-align: center; width:100%;
   }
-  .tb-normal td a:hover {
+  .tb-normal td button:hover {
     font-weight:bold; text-decoration: underline;
   }
   .tb-normal td .no-pin {

@@ -21,9 +21,9 @@
           <td>{{ list.id }}</td>
           <td>{{ list.fix_num }}</td>
           <td><p class="limit-width">
-            <router-link to="/noticeRead">
+            <button type="button" @click="navigate(list.id)">
             {{ list.title }}
-            </router-link>
+            </button>
           </p></td>
           <td>{{ list.notice_time }}</td>
         </tr>
@@ -49,6 +49,11 @@ export default {
   },
   mounted: function () {
     this.$store.dispatch(Constant.FETCH_NOTICE, { pageno: 0 })
+  },
+  methods: {
+    navigate (no) {
+      this.$router.push({ name: 'NoticeRead', params: { no: no } })
+    }
   }
 }
 </script>

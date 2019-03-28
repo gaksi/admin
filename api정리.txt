@@ -2,64 +2,51 @@
 
 ## * 필독 : HTML 코드를 가공없이 서버로 던지면 데이터 베이스 쿼리 문과 에러가 발생함.  따라서 escape unescape 또는 encodeURIComponent decodeURIComponent 등을 이용해서 특수문자를 제거해줘야 함.
 
+
+
+
 ## - 공지사항 리스트
 
-URL : {host}/notice/list  
+URL : {host}/notice/list
 
-body : 
-
+body :
  page = 0~n (페이지 번호)
 
 Response:
 
 {
-
 code : 코드,(200 : 성공)
-
 resData : [{
-
 id = 공지사항 키
-
 title = 제목
-
 content = 내용
-
 notice_time = 시간(unix_timestamp 방식)
 
 },
-
 ........
-
 ]
-
 }
 
 ERROR CODE :
-
 501 = page undefined or no number
-
 502 = mysql connection ERROR
 
-## - 공지사항 글쓰기
+
+
+###### - 공지사항 글쓰기
 
 URL : {host}/notice/write
 
-body : 
-
+body :
 title = 제목
-
 content = 내용
-
 Response:
-
 {
 
 code : 코드,(200 : 성공)
 
 resData : {
-
 insertId = 새로 쓴 공지사항 키
-
 }
 
 }
@@ -67,23 +54,30 @@ insertId = 새로 쓴 공지사항 키
 ERROR CODE :
 
 501 = title undefined
-
 502 = content undefined
-
 503 = mysql connection ERROR
 
-## - 공지사항 수정
+
+
+###### - 공지사항 하나 가져오기, 삭제
+
+URL : %serverhost%/notice/detail
+req Body : id = 공지사항 키
+
+URL : %serverhost%/notice/del
+req Body : id = 공지사항 키
+
+
+
+###### - 공지사항 수정
 
 URL : {host}/notice/edit
 
-body : 
+body :
 
 id = 공지사항 번호 (키)
-
 title = 제목
-
 content = 내용
-
 fix_num = 고정 번호
 
 Response:
@@ -91,11 +85,8 @@ Response:
 {
 
 code : 코드,(200 : 성공)
-
 resData : {
-
 affectedRows= 수정 된 공지사항 갯수 (1 이면 정상)
-
 }
 
 }
@@ -103,45 +94,36 @@ affectedRows= 수정 된 공지사항 갯수 (1 이면 정상)
 ERROR CODE :
 
 501 = id undefined
-
 502 = title undefined
-
 503 = content undefined
-
 504 = fix_num undefined
-
 505 = notice id Error (공지사항의 아이디(키)가 잘못됨)
-
 506 = mysql connection ERROR
 
+
+
+
+
+
+
+
+
+
+
 ## - 공지사항 상단고정 번호 수정
-
 URL : {host}/notice/fixedit
-
-body : 
-
+body :
 id = 게시글 아이디
-
 fix_num = 고정 정렬번호 (고정 취소시 -1로 셋팅)
-
 Response:
 
 {
-
 code : 코드,(200 : 성공)
-
 resData : {
-
 insertId = 적용된 공지사항 키
-
 }
-
 }
-
 ERROR CODE :
-
 501 = id undefined
-
 502 = fix_num undefined
-
 503 = mysql connection ERROR
