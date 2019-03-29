@@ -29,6 +29,10 @@ const getters = {
 const mutations = {
   [Constant.FETCH_NOTICE]: (state, payload) => {
     state.noticeList.notices = payload.notices
+  },
+  [Constant.FETCH_ONE_NOTICE]: (state, payload) => {
+    state.notice = payload.notice[0]
+    console.log(payload.notice)
   }
 }
 
@@ -46,13 +50,13 @@ const actions = {
     })
   },
   [Constant.FETCH_ONE_NOTICE]: (context, payload) => {
-    /*axios.post(CONF.FETCH_ONE_NOTICE, {
-      page: payload.id
+    axios.post(CONF.FETCH_ONE_NOTICE, {
+      id: payload.no
     }).then((response) => {
       context.commit(Constant.FETCH_ONE_NOTICE, { notice: response.data.resData })
     }).catch((err) => {
       console.log(err)
-    })*/
+    })
   },
   [Constant.EDIT_NOTICE]: (context) => {
     const currentPageNo = context.state.noticeList.pageno

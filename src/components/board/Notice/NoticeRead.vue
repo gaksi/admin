@@ -4,15 +4,15 @@
     <div class="notice-write">
       <div class="form-group">
         <h4>고정 순서</h4>
-        <p></p>
+        <p>{{ notice.fix_num }}</p>
       </div>
       <div class="form-group">
         <h4>제목</h4>
-        <p></p>
-\      </div>
+        <p>{{ notice.title }}</p>
+      </div>
       <div class="form-group">
         <h4>내용</h4>
-        <div></div>
+        <div>{{ notice.content }}</div>
       </div>
       <div class="btn-box">
         <router-link :to="{ name:'NoticeList' }" class="btn-basic btn-notice-list"> 목록 </router-link>
@@ -23,12 +23,21 @@
 </template>
 
 <script>
-
+import { mapState } from 'vuex'
+import Constant from '@/Constant'
 export default {
   name: 'NoticeForm',
-  props: ['no'],
+  data () {
+    return {
+      no: this.$route.params.no
+    }
+  },
   computed: {
-
+    ...mapState([ 'notice' ])
+  },
+  created () {
+    console.log(this.notice)
+    this.$store.dispatch(Constant.FETCH_ONE_NOTICE, { no: this.no })
   }
 }
 </script>
