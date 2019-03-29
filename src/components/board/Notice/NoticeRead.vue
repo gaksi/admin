@@ -15,8 +15,12 @@
         <div>{{ notice.content }}</div>
       </div>
       <div class="btn-box">
-        <router-link :to="{ name:'NoticeList' }" class="btn-basic btn-notice-list"> 목록 </router-link>
-        <input type="button" class="btn-basic btn-notice-write-done'" value="완료">
+        <router-link :to="{ name:'NoticeList' }"
+                     class="btn-basic btn-notice-list">
+          목록 </router-link>
+        <input type="button" @click="editMode"
+                     class="btn-basic btn-notice-write-done'" value="수정">
+        <input type="button" @click="deleteNotice" class="btn-basic btn-notice-delete'" value="삭제">
       </div>
     </div>
   </div>
@@ -36,8 +40,18 @@ export default {
     ...mapState([ 'notice' ])
   },
   created () {
-    console.log(this.notice)
     this.$store.dispatch(Constant.FETCH_ONE_NOTICE, { no: this.no })
+  },
+  methods: {
+    deleteNotice: function () {
+      this.$store.dispatch(Constant.DELETE_NOTICE, { no: this.no })
+      this.$router.push({ name: 'NoticeList' })
+    },
+    editMode () {
+      this.$store.dispatch(Constant.FETCH_ONE_NOTICE, { no: this.no })
+      this.$store.commit(Constant.CHANGE_MODE, { mode: 'edit' })
+      this.$router.push({ name: 'NoticeForm' })
+    }
   }
 }
 </script>

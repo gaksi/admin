@@ -1,0 +1,6 @@
+1. transition 글 눌렀을 때 생기는 방법
+2. action 에서 context.contactList.pageno가 객체의 값으로 들어가질 않는다.
+{page.no : context.contactList.pageno} // 뒤의 pageno를 읽을 수 없다.
+3. 리스트 내부 내용이 바뀌는 속도가 너무 느리다. 이전 내용이 보였다가 바뀜
+4. 모듈화하는 단위. CURD는 세부사항이 다르면 다 다른 컴포넌트를 쓰나.
+유동적으로 해서 같은 컴포넌트를 쓰나

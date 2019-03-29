@@ -32,7 +32,12 @@ const mutations = {
   },
   [Constant.FETCH_ONE_NOTICE]: (state, payload) => {
     state.notice = payload.notice[0]
-    console.log(payload.notice)
+  },
+  [Constant.CLEAR_NOTICE]: (state) => {
+    state.notice = { id: 0, title: '', content: '', fix_num: 0, notice_time: 0 }
+  },
+  [Constant.CHANGE_MODE]: (state, payload) => {
+    state.mode = payload.mode
   }
 }
 
@@ -42,9 +47,6 @@ const actions = {
       page: payload.pageno
     }).then((response) => {
       context.commit(Constant.FETCH_NOTICE, { notices: response.data.resData })
-      return 0
-    }).then((response) => {
-      console.log(response)
     }).catch((err) => {
       console.log(err)
     })
@@ -58,15 +60,20 @@ const actions = {
       console.log(err)
     })
   },
-  [Constant.EDIT_NOTICE]: (context) => {
+  [Constant.EDIT_NOTICE]: (context, payload) => {
     const currentPageNo = context.state.noticeList.pageno
-    const notice = context.state.notice
-    axios.post(CONF.EDIT_NOTICE, notice)
+    const notice = payload.notice
+    axios.post(CONF.EDIT_NOTICE, {
+      id: notice.id,
+      title: notice.title,
+      content: notice.content,
+      fix_num: notice.fix_num
+    })
       .then((response) => {
         if (response.data.status === 'success') {
           context.dispatch(Constant.FETCH_NOTICE, { pageno: currentPageNo })
         } else {
-          console.log('공지사항 변경 실패: ' + response.data)
+          console.log(response.data)
         }
       })
       .catch((err) => {
@@ -85,6 +92,14 @@ const actions = {
       .catch((err) => {
         console.log(err)
       })
+  },
+  [Constant.DELETE_NOTICE]: (context, payload) => {
+    const currentPageNo = context.state.noticeList.pageno
+    axios.post(CONF.DELETE_NOTICE, {
+      id: payload.no
+    }).then(() => {
+      context.dispatch(Constant.FETCH_NOTICE, { pageno: currentPageNo })
+    })
   }
 }
 

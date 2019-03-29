@@ -30,7 +30,9 @@
       </tbody>
     </table>
     <div class="btn-box-big">
-      <router-link :to="{ name: 'NoticeForm' }" class="btn-basic-big btn-notice-write"> 글쓰기 </router-link>
+      <router-link :to="{ name: 'NoticeForm' }" @click="addMode"
+                   class="btn-basic-big btn-notice-write">
+        글쓰기 </router-link>
     </div>
   </div>
 </template>
@@ -53,6 +55,10 @@ export default {
   methods: {
     navigate (no) {
       this.$router.push({ name: 'NoticeRead', params: { no: no } })
+    },
+    addMode () {
+      this.$store.commit(Constant.CLEAR_NOTICE)
+      this.$store.commit(Constant.CHANGE_MODE, { mode: 'add' })
     }
   }
 }

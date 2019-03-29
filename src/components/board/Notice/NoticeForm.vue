@@ -28,7 +28,6 @@
                     :editorToolbar="customToolbar"
                     id="notice-contents"
         ></vue-editor>
-        <div>{{ notice.content }}</div>
       </div>
       <div class="btn-box">
         <router-link :to="{ name:'NoticeList' }" class="btn-basic btn-notice-list"> 목록 </router-link>
@@ -59,6 +58,7 @@ export default {
     }
   },
   computed: {
+    ...mapState([ 'mode', 'notice' ]),
     disabled () {
       return this.fixed !== 'fix'
     },
@@ -66,19 +66,31 @@ export default {
       if (this.mode !== 'edit') return '새로운 공지사항 추가'
       else return '공지사항 수정'
     },
-    ...mapState([ 'mode', 'notice' ])
+    fix_num: () => {
+      console.log(this.fixed)
+      if (this.fixed !== 'fix') {
+        return 0
+      }
+    }
   },
   methods: {
     submitEvent: function () {
       if (this.mode === 'edit') {
-        this.$store.dispatch(Constant.EDIT_NOTICE)
+        this.$store.dispatch(Constant.EDIT_NOTICE, { notice: this.notice })
+        this.$router.push({ name: 'NoticeList' })
       } else {
         this.$store.dispatch(Constant.ADD_NOTICE)
       }
+    }
+  },
+  mounted () {
+    if (this.mode === 'add') {
+      this.$store.commit(Constant.CLEAR_NOTICE)
+    } else {
+
     }
   }
 }
 </script>
 <style>
-
 </style>

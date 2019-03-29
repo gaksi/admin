@@ -84,6 +84,7 @@ export default {
     -webkit-box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
     box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
     margin-bottom: 30px; background-color:#fff;
+    overflow:hidden
   }
   .tit-con-box {
     font-size:15px; margin-bottom: 30px; font-weight:700;
