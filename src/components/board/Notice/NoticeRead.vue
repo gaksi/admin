@@ -38,17 +38,13 @@ export default {
   },
   computed: {
     ...mapState([ 'notice' ]),
-    doneNoticeOne: () => {
+    ...mapGetters([ 'doneNoticeOne' ])
+    /* doneNoticeOne: () => {
       return this.$store.getters.doneNoticeOne
-    }
-    //...mapGetters([ 'doneNoticeOne' ])
+    } */
   },
   created () {
     this.$store.dispatch(Constant.FETCH_ONE_NOTICE, { no: this.no })
-
-  },
-  mounted () {
-    console.log(this.$store.getters.doneNoticeOne)
   },
   methods: {
     deleteNotice: function () {

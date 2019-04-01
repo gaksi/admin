@@ -4,7 +4,7 @@
     <table class="tb-normal">
       <colgroup>
         <col width="60px">
-        <col width="60px">
+        <col width="80px">
         <col width="*">
         <col width="150px">
       </colgroup>
@@ -19,7 +19,7 @@
       <tbody class="notice-tbody">
         <tr v-for="list in notices" :key="list.id">
           <td>{{ list.id }}</td>
-          <td>{{ list.fix_num }}</td>
+          <td>{{ list.fix_num }} 번째</td>
           <td><p class="limit-width">
             <button type="button" @click="navigate(list.id)">
             {{ list.title }}

@@ -14,13 +14,13 @@
         <div class="form-group">
           <h4><label for="index">고정 순서</label></h4>
           <input type="text" id="index" class="inp-text-s" maxlength="3" :disabled="disabled"
-                 v-model="notice.fix_num">
+                 v-model="noticeHere.fix_num">
           (0~N 숫자만 써주세요)
         </div>
       </div>
       <div class="form-group">
         <h4><label for="notice-title">제목</label></h4>
-        <input type="text" id="notice-title" class="inp-text2" v-model="notice.title">
+        <input type="text" id="notice-title" class="inp-text2" v-model="noticeHere.title">
       </div>
       <div class="form-group">
         <h4><label for="notice-contents">내용</label></h4>
@@ -76,6 +76,10 @@ export default {
   methods: {
     submitEvent: function () {
       if (this.mode === 'edit') {
+        const upNotice = this.notice.map((item) => {
+          item.title = escape(item.title)
+          item.content = escape(item.content)
+        })
         this.$store.dispatch(Constant.EDIT_NOTICE, { notice: this.notice })
         this.$router.push({ name: 'NoticeList' })
       } else {
