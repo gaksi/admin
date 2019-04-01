@@ -16,13 +16,21 @@ const state = {
 
 const getters = {
   doneNotice: state => {
-    state.noticeList.notices.map((item) => {
+    state.noticeList.notices.forEach((item) => {
       item.title = unescape(item.title)
       const timestemp = item.notice_time * 1000
       const date = new Date(timestemp)
       item.notice_time = moment(date).format('YY-MM-DD')
     })
     return state.noticeList.notices
+  },
+  doneNoticeOne: state => {
+    state.notice.title = unescape(state.notice.title)
+    state.notice.content = unescape(state.notice.content)
+    const timestemp = state.notice.notice_time * 1000
+    const date = new Date(timestemp)
+    state.notice.notice_time = moment(date).format('YY-MM-DD')
+    return state.notice
   }
 }
 

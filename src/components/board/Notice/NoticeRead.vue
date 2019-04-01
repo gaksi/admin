@@ -4,15 +4,15 @@
     <div class="notice-write">
       <div class="form-group">
         <h4>고정 순서</h4>
-        <p>{{ notice.fix_num }}</p>
+        <p>{{ doneNoticeOne.fix_num }}</p>
       </div>
       <div class="form-group">
         <h4>제목</h4>
-        <p>{{ notice.title }}</p>
+        <p>{{ doneNoticeOne.title }}</p>
       </div>
       <div class="form-group">
         <h4>내용</h4>
-        <div>{{ notice.content }}</div>
+        <div>{{ doneNoticeOne.content }}</div>
       </div>
       <div class="btn-box">
         <router-link :to="{ name:'NoticeList' }"
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import Constant from '@/Constant'
 export default {
   name: 'NoticeForm',
@@ -37,10 +37,18 @@ export default {
     }
   },
   computed: {
-    ...mapState([ 'notice' ])
+    ...mapState([ 'notice' ]),
+    doneNoticeOne: () => {
+      return this.$store.getters.doneNoticeOne
+    }
+    //...mapGetters([ 'doneNoticeOne' ])
   },
   created () {
     this.$store.dispatch(Constant.FETCH_ONE_NOTICE, { no: this.no })
+
+  },
+  mounted () {
+    console.log(this.$store.getters.doneNoticeOne)
   },
   methods: {
     deleteNotice: function () {
