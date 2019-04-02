@@ -14,17 +14,17 @@
         <div class="form-group">
           <h4><label for="index">고정 순서</label></h4>
           <input type="text" id="index" class="inp-text-s" maxlength="3" :disabled="disabled"
-                 v-model="notice.fix_num">
+                 v-model="doneNoticeOne.fix_num">
           (0~N 숫자만 써주세요)
         </div>
       </div>
       <div class="form-group">
         <h4><label for="notice-title">제목</label></h4>
-        <input type="text" id="notice-title" class="inp-text2" v-model="notice.title">
+        <input type="text" id="notice-title" class="inp-text2" v-model="doneNoticeOne.title">
       </div>
       <div class="form-group">
         <h4><label for="notice-contents">내용</label></h4>
-        <vue-editor v-model="notice.content"
+        <vue-editor v-model="doneNoticeOne.content"
                     :editorToolbar="customToolbar"
                     id="notice-contents"
         ></vue-editor>
@@ -40,9 +40,9 @@
 
 <script>
 import Constant from '@/Constant'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import { VueEditor } from 'vue2-editor'
-import moment from 'moment'
+// import moment from 'moment'
 
 export default {
   name: 'NoticeForm',
@@ -60,49 +60,51 @@ export default {
   },
   computed: {
     ...mapState([ 'mode', 'notice' ]),
-    disabled () {
+    ...mapGetters([ 'doneNoticeOne' ]),
+    disabled: function () {
       return this.fixed !== 'fix'
     },
     headingText: function () {
       if (this.mode !== 'edit') return '새로운 공지사항 추가'
       else return '공지사항 수정'
     },
-    fix_num: () => {
+    fix_num: function () {
       console.log(this.fixed)
       if (this.fixed !== 'fix') {
         return 0
+      } else {
+        return this.fixed
       }
     }
   },
   methods: {
     submitEvent () {
       if (this.mode === 'edit') {
-        /* this.$store.dispatch(Constant.EDIT_NOTICE, { notice: upNotice })
-        this.$router.push({ name: 'NoticeList' }) */
+        this.$store.dispatch(Constant.EDIT_NOTICE, { notice: this.notice })
+        this.$router.push({ name: 'NoticeList' })
       } else {
         console.log(this.notice)
-        return this.notice.map(function (item) {
-          console.log(item)
-          return {}
-          /* return {
-            id: item.id,
-            title: escape(item.title),
-            content: escape(item.content),
-            fix_num: item.fix_num,
-            notice_time: item.notice_time
-          } */
-        })
-        /* this.$store.dispatch(Constant.ADD_NOTICE) */
+        const date = new Date().getTime()
+        const noticeIn = {
+          id: this.notice.id,
+          title: escape(this.notice.title),
+          content: escape(this.notice.content),
+          fix_num: this.notice.fix_num,
+          notice_time: date
+        }
+        console.log(noticeIn)
+        this.$store.dispatch(Constant.ADD_NOTICE, { notice: noticeIn })
+        this.$router.push({ name: 'NoticeList' })
       }
     }
   },
   mounted () {
+    console.log(this.doneNoticeOne)
     if (this.mode === 'add') {
       this.$store.commit(Constant.CLEAR_NOTICE)
     } else {
 
     }
-    //console.log(moment(this.noticeHere.title))
   }
 }
 </script>

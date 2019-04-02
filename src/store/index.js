@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 const state = {
   mode: 'add',
-  notice: { id: 0, title: '', content: '', fix_num: 0, notice_time: 0 },
+  notice: { id: 0, title: '', content: '', fix_num: -1, notice_time: 0 },
   noticeList: {
     pageno: 0, pagesize: CONF.PAGESIZE, totalcount: 0, notices: []
   }
@@ -25,6 +25,7 @@ const getters = {
     return state.noticeList.notices
   },
   doneNoticeOne: state => {
+    console.log('done 실행')
     state.notice.title = unescape(state.notice.title)
     state.notice.content = unescape(state.notice.content)
     const timestemp = state.notice.notice_time * 1000
@@ -42,7 +43,8 @@ const mutations = {
     state.notice = payload.notice[0]
   },
   [Constant.CLEAR_NOTICE]: (state) => {
-    state.notice = { id: 0, title: '', content: '', fix_num: 0, notice_time: 0 }
+    console.log('clear 실행')
+    state.notice = { id: 0, title: '', content: '', fix_num: -1, notice_time: new Date().getTime() }
   },
   [Constant.CHANGE_MODE]: (state, payload) => {
     state.mode = payload.mode

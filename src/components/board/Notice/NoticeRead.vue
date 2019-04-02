@@ -12,7 +12,7 @@
       </div>
       <div class="form-group">
         <h4>내용</h4>
-        <div>{{ doneNoticeOne.content }}</div>
+        <div class="content-show" v-html="doneNoticeOne.content"></div>
       </div>
       <div class="btn-box">
         <router-link :to="{ name:'NoticeList' }"
@@ -39,9 +39,6 @@ export default {
   computed: {
     ...mapState([ 'notice' ]),
     ...mapGetters([ 'doneNoticeOne' ])
-    /* doneNoticeOne: () => {
-      return this.$store.getters.doneNoticeOne
-    } */
   },
   created () {
     this.$store.dispatch(Constant.FETCH_ONE_NOTICE, { no: this.no })

@@ -87,7 +87,13 @@ export default {
     overflow:hidden
   }
   .tit-con-box {
-    font-size:15px; margin-bottom: 30px; font-weight:700;
+    font-size:16px; margin-bottom: 30px; font-weight:700;
+  }
+
+  /* NOTICE READ `*/
+  .content-show {
+    box-shadow: 0 0 6px #eee;
+    padding:16px 15px
   }
 
   /* FORM */
@@ -152,7 +158,7 @@ export default {
   }
 
   .tb-normal td button {
-    padding: 10px 5px; display:block; font-size:14px; min-height:36px;
+    padding: 10px 5px; display:block; font-size:13px; min-height:36px;
     cursor: pointer; text-align: center; width:100%;
   }
   .tb-normal td button:hover {
@@ -170,12 +176,18 @@ export default {
   }
 
   /* TABLE 2 */
-  .form-group { margin-bottom: 20px; }
-  .form-group h4 { margin-bottom: 8px; font-weight:600 }
+  .form-group { margin-bottom: 26px; }
+  .form-group h4 { margin-bottom: 9px; font-weight:600; font-size:14px; }
   .form-group input[type="radio"] { margin-left:15px; }
   .form-group input[type="radio"]:first-of-type { margin-left:0; }
-  .divided { margin-bottom: 10px; }
   .divided > div { display:inline-block; margin-right:50px; }
+  .form-group > p {
+    padding-left: 10px;
+    border-left: 1px solid #eee;
+    margin-left: 2px;
+    line-height: 1;
+  }
+  .ql-editor { font-size: 14px; }
 
   /* button */
   .btn-box {
