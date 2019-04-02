@@ -6,8 +6,8 @@
       <div class="clearfix divided">
         <div class="form-group">
           <h4><label for="index">고정 여부</label></h4>
-          <input type="radio" id="fix" name="fix" value="fix" v-model="fixed">
-          <label for="fix">고정 </label>
+          <input type="radio" id="isFix" name="fix" value="fix" v-model="fixed">
+          <label for="isFix">고정 </label>
           <input type="radio" id="nonFix" name="fix" value="nonfix" checked v-model="fixed">
           <label for="nonFix"> 고정 안 함 </label>
         </div>
@@ -30,9 +30,10 @@
         ></vue-editor>
       </div>
       <div class="btn-box">
-        <router-link :to="{ name:'NoticeList' }" class="btn-basic btn-notice-list"> 목록 </router-link>
-        <input type="button" @click="submitEvent()"
-               class="btn-basic btn-notice-write-done'" value="완료">
+        <router-link :to="{ name:'NoticeList' }" class="btn-basic btn-notice-list">
+          <i class="xi-list"></i> 목록 </router-link>
+        <button type="button" @click="submitEvent()"
+                class="btn-done btn-notice-write-done'"><i class="xi-check"></i> 완료</button>
       </div>
     </div>
   </div>
@@ -51,7 +52,7 @@ export default {
   },
   data () {
     return {
-      fixed: '',
+      fixed: 'nonfix',
       customToolbar: [
         ['bold', 'underline'],
         [{ 'color': [] }], [ 'link' ]

@@ -16,11 +16,13 @@
       </div>
       <div class="btn-box">
         <router-link :to="{ name:'NoticeList' }"
-                     class="btn-basic btn-notice-list">
+                     class="btn-basic btn-notice-list"><i class="xi-list"></i>
           목록 </router-link>
-        <input type="button" @click="editMode"
-                     class="btn-basic btn-notice-write-done'" value="수정">
-        <input type="button" @click="deleteNotice" class="btn-basic btn-notice-delete'" value="삭제">
+        <button type="button" @click="editMode"
+                class="btn-basic btn-notice-write-done'" ><i class="xi-pen"></i> 수정</button>
+        <button type="button" @click="deleteNotice" class="btn-delete btn-notice-delete'">
+          <i class="xi-trash-o"></i> 삭제
+        </button>
       </div>
     </div>
   </div>

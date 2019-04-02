@@ -5,7 +5,8 @@
     <header>
       <h1>RightAway Admin Page</h1>
       <!-- https://github.com/vuejs/vue-router/issues/800 -->
-      <router-link :to="{ name: 'Login' }" class="logout btn-basic" @click.native="logout">Logout</router-link>
+      <router-link :to="{ name: 'Login' }" class="logout btn-basic" @click.native="logout">
+        <i class="xi-unlock-o"></i> Logout</router-link>
     </header>
     <div class="content-layout-in">
       <transition name="flip" mode="out-in">
@@ -92,8 +93,7 @@ export default {
 
   /* NOTICE READ `*/
   .content-show {
-    box-shadow: 0 0 6px #eee;
-    padding:16px 15px
+    box-shadow: 0 0 6px #eee; padding:16px
   }
 
   /* FORM */
@@ -200,10 +200,10 @@ export default {
   }
   .btn-box > a { margin-left:5px; }
 
-  .btn-box input { display:inline-block; margin-left:5px; }
+  .btn-box input, .btn-box button { display:inline-block; margin-left:5px; }
   .btn-box a:first-child { margin-left:0; }
   .btn-basic {
-    padding: 5px 20px 7px; border-radius:3px; font-weight:600;
+    padding: 5px 18px 7px; border-radius:3px; font-weight:600;
     border:1px solid #4d7fee; background-color:#4d7fee; color:#fff;
     box-shadow: 0 2px 6px 0 rgba(77, 127, 238, 0.5); font-size:13px;
     line-height:21px; display:inline-block;
@@ -211,6 +211,26 @@ export default {
   .btn-basic:hover {
     border:1px solid #4d7fee;
     color:#4d7fee; background-color:#fff;
+  }
+  .btn-delete {
+    padding: 5px 16px 7px; border-radius:3px; font-weight:600;
+    border:1px solid #ff5555;  color:#fff;
+    box-shadow: 0 2px 6px 0 rgba(255, 85, 85, 0.46); font-size:13px;
+    line-height:21px; display:inline-block; background-color:#ff5555;
+  }
+  .btn-delete:hover {
+    border:1px solid #ff5555;
+    color:#ff5555; background-color:#fff;
+  }
+  .btn-done {
+    padding: 6px 18px 7px; border-radius:3px; font-weight:600;
+    border:1px solid #34a3cc;  color:#fff;
+    box-shadow: 0 2px 6px 0  rgba(57,175,209,.5); font-size:13px;
+    line-height:21px; display:inline-block; background-color:#34a3cc;
+  }
+  .btn-done:hover {
+    border:1px solid #34a3cc;
+    color:#34a3cc; background-color:#fff;
   }
   .btn-basic-big {
     padding: 8px 0 10px; width: 190px; text-align: center;
@@ -241,5 +261,12 @@ export default {
     background:linear-gradient(to right, #13b7e4, #8b36f1); font-weight:bold;
     border-radius:8px; width:100%; display:block; font-size:14px;
   }
+
+  /* ICON */
+  .xi-list { margin-left: -5px; margin-right: 2px; vertical-align:baseline; font-size:15px; }
+  .xi-trash-o { margin-left: -5px; margin-right: 2px; vertical-align:baseline; font-size:15px; }
+  .xi-pen { margin-left: -5px; margin-right: 2px; vertical-align:baseline; font-size:13px; }
+  .xi-check { margin-left: -5px; margin-right: 5px; vertical-align:baseline; font-size:13px; }
+  .xi-unlock-o { margin-left: -5px; margin-right: 2px; vertical-align:baseline; font-size:13px; }
 
 </style>
