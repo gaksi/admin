@@ -14,13 +14,13 @@
         <div class="form-group">
           <h4><label for="index">고정 순서</label></h4>
           <input type="text" id="index" class="inp-text-s" maxlength="3" :disabled="disabled"
-                 v-model="noticeHere.fix_num">
+                 v-model="notice.fix_num">
           (0~N 숫자만 써주세요)
         </div>
       </div>
       <div class="form-group">
         <h4><label for="notice-title">제목</label></h4>
-        <input type="text" id="notice-title" class="inp-text2" v-model="noticeHere.title">
+        <input type="text" id="notice-title" class="inp-text2" v-model="notice.title">
       </div>
       <div class="form-group">
         <h4><label for="notice-contents">내용</label></h4>
@@ -42,6 +42,7 @@
 import Constant from '@/Constant'
 import { mapState } from 'vuex'
 import { VueEditor } from 'vue2-editor'
+import moment from 'moment'
 
 export default {
   name: 'NoticeForm',
@@ -74,16 +75,24 @@ export default {
     }
   },
   methods: {
-    submitEvent: function () {
+    submitEvent () {
       if (this.mode === 'edit') {
-        const upNotice = this.notice.map((item) => {
-          item.title = escape(item.title)
-          item.content = escape(item.content)
-        })
-        this.$store.dispatch(Constant.EDIT_NOTICE, { notice: this.notice })
-        this.$router.push({ name: 'NoticeList' })
+        /* this.$store.dispatch(Constant.EDIT_NOTICE, { notice: upNotice })
+        this.$router.push({ name: 'NoticeList' }) */
       } else {
-        this.$store.dispatch(Constant.ADD_NOTICE)
+        console.log(this.notice)
+        return this.notice.map(function (item) {
+          console.log(item)
+          return {}
+          /* return {
+            id: item.id,
+            title: escape(item.title),
+            content: escape(item.content),
+            fix_num: item.fix_num,
+            notice_time: item.notice_time
+          } */
+        })
+        /* this.$store.dispatch(Constant.ADD_NOTICE) */
       }
     }
   },
@@ -93,6 +102,7 @@ export default {
     } else {
 
     }
+    //console.log(moment(this.noticeHere.title))
   }
 }
 </script>
