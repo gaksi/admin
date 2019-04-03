@@ -223,7 +223,7 @@ export default {
     color:#ff5555; background-color:#fff;
   }
   .btn-done {
-    padding: 6px 18px 7px; border-radius:3px; font-weight:600;
+    padding: 6px 17px 7px; border-radius:3px; font-weight:600;
     border:1px solid #34a3cc;  color:#fff;
     box-shadow: 0 2px 6px 0  rgba(57,175,209,.5); font-size:13px;
     line-height:21px; display:inline-block; background-color:#34a3cc;

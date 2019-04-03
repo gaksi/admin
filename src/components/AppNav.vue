@@ -1,13 +1,13 @@
 <template>
   <nav>
+    <div class="star-box">
+      <img src="../assets/star.png" alt="" v-for="n in 20" :class="{['star'+n]: true}" :key="n">
+    </div>
     <router-link :to="{ name: 'Admin' }" class="logo">
       <img src="../assets/logo.png" alt="오늘당장 로고">
     </router-link>
     <nav-items
       :items="navItems" />
-    <div class="star-box">
-      <img src="../assets/star.png" alt="" v-for="n in 20" :class="{['star'+n]: true}" :key="n">
-    </div>
   </nav>
 </template>
 
@@ -39,8 +39,8 @@ export default {
   padding:20px 0
 }
 .logo img { width: 100%; }
-nav .star-box { opacity:0; transition:all 1s}
-nav:hover .star-box { opacity:1; }
+nav .star-box { position:relative; opacity:0; filter:Alpha(opacity=0); -ms-opacity:0; transition:all 1s}
+nav:hover .star-box { opacity:1; filter:Alpha(opacity=1); -ms-opacity:1; }
 
 .star-box img { position:absolute; }
 .star1 { left: 14px; top: 8px; width: 12px; height: 12px; opacity: 0; animation:starBlink01 3.3s 0s infinite alternate }

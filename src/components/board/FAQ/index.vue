@@ -12,23 +12,23 @@
 </template>
 
 <script>
-import { VueEditor } from 'vue2-editor'
-export default {
-  name: 'FAQ',
-  components: {
-    VueEditor
-  },
-  data () {
-    return {
-      customToolbar: [
-        ['bold', 'underline'],
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        [{ 'color': [] }], [ 'link' ]
-      ],
-      content: ''
+  import { VueEditor } from 'vue2-editor'
+  export default {
+    name: 'FAQ',
+    components: {
+      VueEditor
+    },
+    data () {
+      return {
+        customToolbar: [
+          ['bold', 'underline'],
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          [{ 'color': [] }], [ 'link' ]
+        ],
+        content: ''
+      }
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

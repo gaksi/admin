@@ -4,25 +4,28 @@ import Router from 'vue-router'
 import AppAdmin from '@/components/Admin'
 import AppLogin from '@/components/Login'
 
+import User from '@/components/user/'
+import UserInfo from '@/components/user/UserInfo'
+import reportedUser from '@/components/user/reportedUser'
+
 import Board from '@/components/board/'
-import Notice from '@/components/board/Notice/index'
+import Notice from '@/components/board/Notice/'
 import NoticeForm from '@/components/board/Notice/NoticeForm'
 import NoticeList from '@/components/board/Notice/NoticeList'
 import NoticeRead from '@/components/board/Notice/NoticeRead'
+import Article from '@/components/board/Article/'
+import FAQ from '@/components/board/FAQ/'
+import Push from '@/components/board/Push/'
+
+import Pay from '@/components/pay/'
+import Payment from '@/components/pay/Payment'
 
 import Info from '@/components/info/'
-import FAQ from '@/components/info/FAQ'
 import Help from '@/components/info/Help'
 
 import Manage from '@/components/manage/'
 import Account from '@/components/manage/Account'
 import Menu from '@/components/manage/Menu'
-
-import Pay from '@/components/pay/'
-import Payment from '@/components/pay/Payment'
-
-import User from '@/components/user/'
-import UserInfo from '@/components/user/UserInfo'
 
 import NotFoundPage from '@/views/NotFoundPage'
 
@@ -57,6 +60,27 @@ const router = new Router({
       redirect: { name: 'Board' },
       children: [
         {
+          path: '/user',
+          name: 'User',
+          component: User,
+          title: 'User',
+          redirect: { name: 'UserInfo' },
+          children: [
+            {
+              path: '/userInfo',
+              name: 'UserInfo',
+              component: UserInfo,
+              title: 'UserInfo'
+            },
+            {
+              path: '/reportedUser',
+              name: 'reportedUser',
+              component: reportedUser,
+              title: 'ReportedUser'
+            }
+          ]
+        },
+        {
           path: '/board',
           name: 'Board',
           component: Board,
@@ -87,6 +111,27 @@ const router = new Router({
                   component: NoticeRead
                 }
               ]
+            },
+            {
+              path: '/FAQ',
+              name: 'FAQ',
+              component: FAQ,
+              title: 'FAQ',
+              sub: true
+            },
+            {
+              path: '/Push',
+              name: 'Push',
+              component: Push,
+              title: 'Push',
+              sub: true
+            },
+            {
+              path: '/Article',
+              name: 'Article',
+              component: Article,
+              title: 'Article',
+              sub: true
             }
           ]
         },
@@ -144,21 +189,6 @@ const router = new Router({
               name: 'Payment',
               component: Payment,
               title: 'Payment'
-            }
-          ]
-        },
-        {
-          path: '/user',
-          name: 'User',
-          component: User,
-          title: 'User',
-          redirect: { name: 'UserInfo' },
-          children: [
-            {
-              path: '/userInfo',
-              name: 'UserInfo',
-              component: UserInfo,
-              title: 'UserInfo'
             }
           ]
         }
