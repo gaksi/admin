@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import CONF from '../../Config.js'
+import CONF from '../../../Config.js'
 export default {
   name: 'Account'
 }

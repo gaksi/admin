@@ -1,7 +1,7 @@
 <template>
   <transition-group tag="ul" name="list" class="gnb">
-    <template v-for="(item, index) in items" >
-      <li v-if="item.title && listshow" :key="index">
+    <template v-for="(item, index) in items">
+      <li v-if="item.title" :key="index">
         <span v-if="item.children && !item.sub" class="tit-nav">
           {{ item.title }}
         </span>
@@ -10,7 +10,7 @@
           <i class="xi-night icon-left"></i> {{ item.title }}
           <i class="xi-angle-right-min right-arrow"></i>
         </router-link>
-        <nav-items v-if="item.children"
+        <nav-items v-if="item.children && depth < 2"
           :items="item.children"
           :depth="depth + 1" />
       </li>
@@ -26,18 +26,13 @@ export default {
   components: {
     NavItems
   },
-  data () {
-    return { listshow: false }
-  },
+
   props: {
     items: Array,
     depth: {
       type: Number,
       default: 1
     }
-  },
-  mounted () {
-    this.listshow = true
   }
 }
 </script>

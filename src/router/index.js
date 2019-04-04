@@ -22,10 +22,10 @@ import Payment from '@/components/pay/Payment'
 
 import Info from '@/components/info/'
 import Help from '@/components/info/Help'
+import Policy from '@/components/info/Policy'
 
 import Manage from '@/components/manage/'
 import Account from '@/components/manage/Account'
-import Menu from '@/components/manage/Menu'
 
 import NotFoundPage from '@/views/NotFoundPage'
 
@@ -153,6 +153,12 @@ const router = new Router({
               name: 'Help',
               component: Help,
               title: 'Help'
+            },
+            {
+              path: '/Policy',
+              name: 'Policy',
+              component: Policy,
+              title: 'Policy'
             }
           ]
         },
@@ -168,12 +174,6 @@ const router = new Router({
               name: 'Account',
               component: Account,
               title: 'Account'
-            },
-            {
-              path: '/menu',
-              name: 'Menu',
-              component: Menu,
-              title: 'Menu'
             }
           ]
         },
