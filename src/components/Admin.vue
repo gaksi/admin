@@ -69,7 +69,7 @@ export default {
     font-size:16px; font-weight:600; margin-left:2px;
   }
   .content-layout-in {
-    width: 100%; padding-right: 15px; padding-left: 15px;
+    width: 100%; padding:20px 44px 0;
     margin-right: auto; margin-left: auto;
   }
   .page-header { position:relative; }
@@ -81,7 +81,7 @@ export default {
   }
 
   .content-box {
-    padding:20px 25px 25px; min-width:900px;
+    padding:2.8% 4%; min-width:900px;
     -webkit-box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
     box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
     margin-bottom: 30px; background-color:#fff;
@@ -89,6 +89,7 @@ export default {
   }
   .tit-con-box {
     font-size:16px; margin-bottom: 30px; font-weight:700;
+    margin-left:-10px;
   }
 
   /* NOTICE READ `*/
@@ -140,7 +141,7 @@ export default {
 
   table td, table a, table th { color:#6c757d; font-size:14px; }
   .limit-width {
-    width:680px; margin:0 auto;
+    max-width:680px; min-width:350px; margin:0 auto;
   }
   .limit-width a {
     width:100%; overflow:hidden; text-overflow: ellipsis;

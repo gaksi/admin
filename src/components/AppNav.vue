@@ -35,7 +35,8 @@ export default {
 
 <style>
 .logo {
-  width: 100px; text-align:center; margin:10px auto; display:block;
+  width: 100px; text-align:center;
+  margin:15px auto 20px; display:block;
   padding:20px 0
 }
 .logo img { width: 100%; }

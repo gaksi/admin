@@ -63,20 +63,20 @@ const router = new Router({
           path: '/user',
           name: 'User',
           component: User,
-          title: 'User',
+          title: '회원관리',
           redirect: { name: 'UserInfo' },
           children: [
             {
               path: '/userInfo',
               name: 'UserInfo',
               component: UserInfo,
-              title: 'UserInfo'
+              title: '회원 통합 관리'
             },
             {
               path: '/reportedUser',
               name: 'reportedUser',
               component: reportedUser,
-              title: 'ReportedUser'
+              title: '신고 유저 관리'
             }
           ]
         },
@@ -84,14 +84,14 @@ const router = new Router({
           path: '/board',
           name: 'Board',
           component: Board,
-          title: 'Board',
+          title: '글 관리',
           redirect: { name: 'Notice' },
           children: [
             {
               path: '/notice',
               name: 'Notice',
               component: Notice,
-              title: 'Notice',
+              title: '공지사항 관리',
               sub: true,
               redirect: { name: 'NoticeList' },
               children: [
@@ -116,21 +116,21 @@ const router = new Router({
               path: '/FAQ',
               name: 'FAQ',
               component: FAQ,
-              title: 'FAQ',
+              title: 'FAQ 관리',
               sub: true
             },
             {
-              path: '/Push',
+              path: '/push',
               name: 'Push',
               component: Push,
-              title: 'Push',
+              title: '푸시 관리',
               sub: true
             },
             {
-              path: '/Article',
+              path: '/article',
               name: 'Article',
               component: Article,
-              title: 'Article',
+              title: '세부페이지 글 관리',
               sub: true
             }
           ]
@@ -139,26 +139,20 @@ const router = new Router({
           path: '/info',
           name: 'Info',
           component: Info,
-          title: 'Info',
-          redirect: { name: 'FAQ' },
+          title: '고객센터',
+          redirect: { name: 'Help' },
           children: [
             {
-              path: '/FAQ',
-              name: 'FAQ',
-              component: FAQ,
-              title: 'FAQ'
-            },
-            {
-              path: '/Help',
+              path: '/help',
               name: 'Help',
               component: Help,
-              title: 'Help'
+              title: '1:1 문의 관리'
             },
             {
-              path: '/Policy',
+              path: '/policy',
               name: 'Policy',
               component: Policy,
-              title: 'Policy'
+              title: '정책'
             }
           ]
         },
@@ -166,14 +160,14 @@ const router = new Router({
           path: '/manage',
           name: 'Manage',
           component: Manage,
-          title: 'Manage',
+          title: '권한 관리',
           redirect: { name: 'Account' },
           children: [
             {
               path: '/account',
               name: 'Account',
               component: Account,
-              title: 'Account'
+              title: '관리자 계정 관리'
             }
           ]
         },
@@ -181,14 +175,14 @@ const router = new Router({
           path: '/pay',
           name: 'Pay',
           component: Pay,
-          title: 'Pay',
+          title: '결제 관리',
           redirect: { name: 'Payment' },
           children: [
             {
               path: '/payment',
               name: 'Payment',
               component: Payment,
-              title: 'Payment'
+              title: '결제내역 관리'
             }
           ]
         }

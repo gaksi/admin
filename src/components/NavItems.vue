@@ -46,13 +46,13 @@ export default {
   .gnb { margin-bottom:30px; }
   .tit-nav {
     padding:0 30px; margin-bottom:10px; letter-spacing: .05em;
-    pointer-events: none; cursor: default;
+    pointer-events: none; cursor: default; margin-left:-5px;
     font-size: 11px; text-transform: uppercase;
     color: #cedce4; font-weight: 700; display:block;
   }
   .gnb a {
     color: #cedce4; display: block;
-    padding: 7.5px 30px; font-size: 16px;
+    padding: 5px 30px; font-size: 14px;
     position: relative;
   }
   .gnb a:hover { color:#fff; }
@@ -60,9 +60,9 @@ export default {
   .gnb a.router-link-exact-active { color:#fff; }
   .gnb a.router-link-active { color:#fff; }
   .gnb a.act { color:#fff; }
-  .icon-left { display:inline-block; margin:-5px 5px 0 0 ; font-size:12px; }
+  .icon-left { display:inline-block; margin:-5px 2px 0 0 ; font-size:12px; }
 
   .right-arrow {
-    position:absolute; top:12px; right:27px
+    position:absolute; top:7px; right:27px
   }
 </style>
