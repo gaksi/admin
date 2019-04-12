@@ -7,15 +7,15 @@ import moment from 'moment'
 Vue.use(Vuex)
 
 const state = {
-  mode: 'add',
+/*  mode: 'add',
   notice: { id: 0, title: '', content: '', fix_num: -1, notice_time: 0 },
   noticeList: {
     pageno: 0, pagesize: CONF.PAGESIZE, totalcount: 0, notices: []
-  }
+  } */
 }
 
 const getters = {
-  doneNotice: state => {
+  /* doneNotice: state => {
     state.noticeList.notices.forEach((item) => {
       item.title = unescape(item.title)
       const timestemp = item.notice_time * 1000
@@ -32,11 +32,11 @@ const getters = {
     const date = new Date(timestemp)
     state.notice.notice_time = moment(date).format('YY-MM-DD')
     return state.notice
-  }
+  } */
 }
 
 const mutations = {
-  [Constant.FETCH_NOTICE]: (state, payload) => {
+  /* [Constant.FETCH_NOTICE]: (state, payload) => {
     state.noticeList.notices = payload.notices
   },
   [Constant.FETCH_ONE_NOTICE]: (state, payload) => {
@@ -48,11 +48,11 @@ const mutations = {
   },
   [Constant.CHANGE_MODE]: (state, payload) => {
     state.mode = payload.mode
-  }
+  } */
 }
 
 const actions = {
-  [Constant.FETCH_NOTICE]: (context, payload) => {
+/*  [Constant.FETCH_NOTICE]: (context, payload) => {
     axios.post(CONF.FETCH_NOTICE, {
       page: payload.pageno
     }).then((response) => {
@@ -110,7 +110,7 @@ const actions = {
     }).then(() => {
       context.dispatch(Constant.FETCH_NOTICE, { pageno: currentPageNo })
     })
-  }
+  } */
 }
 
 export default new Vuex.Store({

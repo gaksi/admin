@@ -29,31 +29,53 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
-import Constant from '@/Constant'
+
+import axios from 'axios'
+import CONF from '@/Config'
+import moment from 'moment'
 export default {
   name: 'NoticeForm',
   data () {
     return {
-      no: this.$route.params.no
+      no: this.$route.params.no,
+      notice: { id: 0, title: '', content: '', fix_num: -1, notice_time: 0 }
     }
   },
   computed: {
-    ...mapState([ 'notice' ]),
-    ...mapGetters([ 'doneNoticeOne' ])
+    doneNoticeOne: function () {
+      const timestemp = this.notice.notice_time * 1000
+      const date = new Date(timestemp)
+      return {
+        id: this.notice.id,
+        title: unescape(this.notice.title),
+        content: unescape(this.notice.content),
+        fix_num: this.notice.fix_num,
+        notice_time: moment(date).format('YY-MM-DD')
+      }
+    }
   },
   created () {
-    this.$store.dispatch(Constant.FETCH_ONE_NOTICE, { no: this.no })
+    axios.post(CONF.FETCH_ONE_NOTICE, {
+      id: this.no
+    }).then((response) => {
+      this.notice = response.data.resData[0]
+    }).catch((err) => {
+      console.log(err)
+    })
   },
   methods: {
     deleteNotice: function () {
-      this.$store.dispatch(Constant.DELETE_NOTICE, { no: this.no })
+      axios.post(CONF.DELETE_NOTICE, {
+        id: this.no
+      }).then(() => {
+        console.log('delete')
+      }).catch((err) => {
+        console.log(err)
+      })
       this.$router.push({ name: 'NoticeList' })
     },
     editMode () {
-      this.$store.dispatch(Constant.FETCH_ONE_NOTICE, { no: this.no })
-      this.$store.commit(Constant.CHANGE_MODE, { mode: 'edit' })
-      this.$router.push({ name: 'NoticeForm' })
+      this.$router.push({ name: 'NoticeForm', query: { mode: 'edit', no: this.no } })
     }
   }
 }

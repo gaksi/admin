@@ -1,19 +1,19 @@
 <template>
   <div>
-  <app-nav />
-  <div class="content-layout">
-    <header>
-      <h1>RightAway Admin Page</h1>
-      <!-- https://github.com/vuejs/vue-router/issues/800 -->
-      <router-link :to="{ name: 'Login' }" class="logout btn-basic" @click.native="logout">
-        <i class="xi-unlock-o"></i> Logout</router-link>
-    </header>
-    <div class="content-layout-in">
-      <transition name="flip" mode="out-in">
-        <router-view/>
-      </transition>
+    <app-nav />
+    <div class="content-layout">
+      <header>
+        <h1>RightAway Admin Page</h1>
+        <!-- https://github.com/vuejs/vue-router/issues/800 -->
+        <router-link :to="{ name: 'Login' }" class="logout btn-basic" @click.native="logout">
+          <i class="xi-unlock-o"></i> Logout</router-link>
+      </header>
+      <div class="content-layout-in">
+        <transition name="flip" mode="out-in">
+          <router-view/>
+        </transition>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 

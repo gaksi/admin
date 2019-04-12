@@ -2,7 +2,6 @@
   <div>
     <h3 class="tit-con-box">{{ headingText }}</h3>
     <div class="notice-write">
-      <!--<h3 class="tit-contents">공지사항 글쓰기</h3>-->
       <div class="clearfix divided">
         <div class="form-group">
           <h4><label for="index">고정 여부</label></h4>
@@ -14,36 +13,39 @@
         <div class="form-group">
           <h4><label for="index">고정 순서</label></h4>
           <input type="text" id="index" class="inp-text-s" maxlength="3" :disabled="disabled"
-                 v-model="doneNoticeOne.fix_num">
+                 v-model="notice.fix_num">
           (0~N 숫자만 써주세요)
         </div>
       </div>
       <div class="form-group">
         <h4><label for="notice-title">제목</label></h4>
-        <input type="text" id="notice-title" class="inp-text2" v-model="doneNoticeOne.title">
+        <input type="text" id="notice-title" class="inp-text2" v-model="notice.title">
       </div>
       <div class="form-group">
         <h4><label for="notice-contents">내용</label></h4>
-        <vue-editor v-model="doneNoticeOne.content"
+        <vue-editor v-model="notice.content"
                     :editorToolbar="customToolbar"
                     id="notice-contents"
         ></vue-editor>
+        notice : {{ notice.title }}
+        doneNoticeOne : {{ doneNoticeOne.title }}
       </div>
       <div class="btn-box">
         <router-link :to="{ name:'NoticeList' }" class="btn-basic btn-notice-list">
           <i class="xi-list"></i> 목록 </router-link>
         <button type="button" @click="submitEvent()"
                 class="btn-done btn-notice-write-done'"><i class="xi-check"></i> 완료</button>
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Constant from '@/Constant'
-import { mapState, mapGetters } from 'vuex'
+import axios from 'axios'
+import CONF from '@/Config'
+import moment from 'moment'
 import { VueEditor } from 'vue2-editor'
-// import moment from 'moment'
 
 export default {
   name: 'NoticeForm',
@@ -53,15 +55,45 @@ export default {
   data () {
     return {
       fixed: 'nonfix',
+      no: this.$route.query.no,
+      mode: this.$route.query.mode,
+      notice: { id: 0, title: '', content: '', fix_num: -1, notice_time: 0 },
       customToolbar: [
         ['bold', 'underline'],
         [{ 'color': [] }], [ 'link' ]
       ]
     }
   },
+  created () {
+    if (this.mode === 'edit') {
+      axios.post(CONF.FETCH_ONE_NOTICE, {
+        id: this.no
+      }).then((response) => {
+        this.notice = response.data.resData[0]
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+  },
   computed: {
-    ...mapState([ 'mode', 'notice' ]),
-    ...mapGetters([ 'doneNoticeOne' ]),
+    doneNoticeOne: function () {
+      if (this.mode === 'edit') {
+        const timestemp = this.notice.notice_time * 1000
+        const date = new Date(timestemp)
+        this.notice.title = unescape(this.notice.title)
+        this.notice.content = unescape(this.notice.content)
+        this.notice.notice_time = moment(date).format('YY-MM-DD')
+        return {
+          id: this.notice.id,
+          title: unescape(this.notice.title),
+          content: unescape(this.notice.content),
+          fix_num: this.notice.fix_num,
+          notice_time: moment(date).format('YY-MM-DD')
+        }
+      } else {
+        return { id: 0, title: '', content: '', fix_num: -1, notice_time: 0 }
+      }
+    },
     disabled: function () {
       return this.fixed !== 'fix'
     },
@@ -81,30 +113,45 @@ export default {
   methods: {
     submitEvent () {
       if (this.mode === 'edit') {
-        this.$store.dispatch(Constant.EDIT_NOTICE, { notice: this.notice })
+        axios.post(CONF.EDIT_NOTICE, {
+          id: this.notice.id,
+          title: this.notice.title,
+          content: this.notice.content,
+          fix_num: this.notice.fix_num
+        })
+          .then((response) => {
+            if (response.data.status === 'success') {
+              console.log(response.data.status)
+            } else {
+              console.log(response.data)
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          })
         this.$router.push({ name: 'NoticeList' })
       } else {
-        console.log(this.notice)
-        const date = new Date().getTime()
+        console.log('add NOtice 실행' + this.notice)
         const noticeIn = {
-          id: this.notice.id,
           title: escape(this.notice.title),
           content: escape(this.notice.content),
-          fix_num: this.notice.fix_num,
-          notice_time: date
+          fix_num: this.notice.fix_num
         }
+        console.log('보내는 내용은')
         console.log(noticeIn)
-        this.$store.dispatch(Constant.ADD_NOTICE, { notice: noticeIn })
+        axios.post(CONF.ADD_NOTICE, noticeIn)
+          .then((response) => {
+            if (response.data.status === 'success') {
+              console.log(response.data.resData.insertId)
+            } else {
+              console.log(response.data)
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          })
         this.$router.push({ name: 'NoticeList' })
       }
-    }
-  },
-  mounted () {
-    console.log(this.doneNoticeOne)
-    if (this.mode === 'add') {
-      this.$store.commit(Constant.CLEAR_NOTICE)
-    } else {
-
     }
   }
 }

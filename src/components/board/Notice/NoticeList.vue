@@ -38,29 +38,45 @@
 </template>
 
 <script>
-import Constant from '@/Constant'
-import { mapState } from 'vuex'
+import CONF from '@/Config'
+import axios from 'axios'
+import moment from 'moment'
 
 export default {
   name: 'Notice',
-  computed: {
-    ...mapState([ 'mode', 'noticeList' ]),
-    notices: function () {
-      return this.$store.getters.doneNotice
+  data () {
+    return {
+      noticeList: {
+        pageno: 0, pagesize: CONF.PAGESIZE, totalcount: 0, notices: []
+      }
     }
   },
-  mounted: function () {
-    this.$store.dispatch(Constant.FETCH_NOTICE, { pageno: 0 })
+  created () {
+    axios.post(CONF.FETCH_NOTICE, {
+      page: this.noticeList.pageno
+    }).then((response) => {
+      this.noticeList.notices = response.data.resData
+    }).catch((err) => {
+      console.log(err)
+    })
+  },
+  computed: {
+    notices: function () {
+      this.noticeList.notices.forEach((item) => {
+        item.title = unescape(item.title)
+        const timestemp = item.notice_time * 1000
+        const date = new Date(timestemp)
+        item.notice_time = moment(date).format('YY-MM-DD')
+      })
+      return this.noticeList.notices
+    }
   },
   methods: {
     navigate (no) {
       this.$router.push({ name: 'NoticeRead', params: { no: no } })
     },
     addMode () {
-      console.log('addMode실행')
-      this.$store.commit(Constant.CLEAR_NOTICE)
-      this.$store.commit(Constant.CHANGE_MODE, { mode: 'add' })
-      this.$router.push({ name: 'NoticeForm' })
+      this.$router.push({ name: 'NoticeForm', query: { mode: 'add' } })
     }
   }
 }
