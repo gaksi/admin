@@ -33,6 +33,12 @@
 import axios from 'axios'
 import CONF from '@/Config'
 import moment from 'moment'
+import { create } from 'vue-modal-dialogs'
+import AppDialog from '@/components/dialog/AppDialog'
+
+const confirmDelete = create(AppDialog, 'title', 'description')
+// const confirmDelete2 = create(AppDialog)
+
 export default {
   name: 'NoticeForm',
   data () {
@@ -65,14 +71,18 @@ export default {
   },
   methods: {
     deleteNotice: function () {
-      axios.post(CONF.DELETE_NOTICE, {
-        id: this.no
-      }).then(() => {
-        console.log('delete')
-      }).catch((err) => {
-        console.log(err)
+      confirmDelete('Delete notice', 'Are you sure you want to delete...?').then(yes => {
+        if (yes) {
+          axios.post(CONF.DELETE_NOTICE, {
+            id: this.no
+          }).then(() => {
+            console.log('delete')
+          }).catch((err) => {
+            console.log(err)
+          })
+          this.$router.push({ name: 'NoticeList' })
+        }
       })
-      this.$router.push({ name: 'NoticeList' })
     },
     editMode () {
       this.$router.push({ name: 'NoticeForm', query: { mode: 'edit', no: this.no },
