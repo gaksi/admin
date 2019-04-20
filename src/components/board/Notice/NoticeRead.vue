@@ -75,7 +75,8 @@ export default {
       this.$router.push({ name: 'NoticeList' })
     },
     editMode () {
-      this.$router.push({ name: 'NoticeForm', query: { mode: 'edit', no: this.no } })
+      this.$router.push({ name: 'NoticeForm', query: { mode: 'edit', no: this.no },
+        params: { item: this.doneNoticeOne }})
     }
   }
 }

@@ -103,7 +103,8 @@ const router = new Router({
                 {
                   path: '/notice/noticeForm',
                   name: 'NoticeForm',
-                  component: NoticeForm
+                  component: NoticeForm,
+                  props: true
                 },
                 {
                   path: '/notice/:no',

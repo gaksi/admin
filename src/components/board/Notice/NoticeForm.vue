@@ -52,6 +52,9 @@ export default {
   components: {
     VueEditor
   },
+  props: [
+    'item'
+  ],
   data () {
     return {
       fixed: 'nonfix',
@@ -66,13 +69,8 @@ export default {
   },
   created () {
     if (this.mode === 'edit') {
-      axios.post(CONF.FETCH_ONE_NOTICE, {
-        id: this.no
-      }).then((response) => {
-        this.notice = response.data.resData[0]
-      }).catch((err) => {
-        console.log(err)
-      })
+      console.log(this.item)
+      this.notice = this.item
     }
   },
   computed: {
