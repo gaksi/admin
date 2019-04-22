@@ -1,34 +1,31 @@
 <template>
   <div>
-    <h3 class="tit-con-box">{{ headingText }}</h3>
     <div class="notice-write">
       <div class="clearfix divided">
         <div class="form-group">
-          <h4><label for="index">고정 여부</label></h4>
+          <h3><label for="index">고정 여부</label></h3>
           <input type="radio" id="isFix" name="fix" value="fix" v-model="fixed">
           <label for="isFix">고정 </label>
           <input type="radio" id="nonFix" name="fix" value="nonfix" checked v-model="fixed">
           <label for="nonFix"> 고정 안 함 </label>
         </div>
         <div class="form-group">
-          <h4><label for="index">고정 순서</label></h4>
+          <h3><label for="index">고정 순서</label></h3>
           <input type="text" id="index" class="inp-text-s" maxlength="3" :disabled="disabled"
                  v-model="notice.fix_num">
           (0~N 숫자만 써주세요)
         </div>
       </div>
       <div class="form-group">
-        <h4><label for="notice-title">제목</label></h4>
+        <h3><label for="notice-title">제목</label></h3>
         <input type="text" id="notice-title" class="inp-text2" v-model="notice.title">
       </div>
       <div class="form-group">
-        <h4><label for="notice-contents">내용</label></h4>
+        <h3><label for="notice-contents">내용</label></h3>
         <vue-editor v-model="notice.content"
                     :editorToolbar="customToolbar"
                     id="notice-contents"
         ></vue-editor>
-        notice : {{ notice.title }}
-        doneNoticeOne : {{ doneNoticeOne.title }}
       </div>
       <div class="btn-box">
         <router-link :to="{ name:'NoticeList' }" class="btn-basic btn-notice-list">
@@ -94,10 +91,6 @@ export default {
     },
     disabled: function () {
       return this.fixed !== 'fix'
-    },
-    headingText: function () {
-      if (this.mode !== 'edit') return '새로운 공지사항 추가'
-      else return '공지사항 수정'
     },
     fix_num: function () {
       console.log(this.fixed)

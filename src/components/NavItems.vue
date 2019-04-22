@@ -59,6 +59,7 @@ export default {
   .gnb a:hover .icon-left { transform:rotate(360deg); transition:all .5s }
   .gnb a.router-link-exact-active { color:#fff; }
   .gnb a.router-link-active { color:#fff; }
+  .gnb a.router-link-active i { color:#fff; }
   .gnb a.act { color:#fff; }
   .icon-left { display:inline-block; margin:-5px 2px 0 0 ; font-size:12px; }
 

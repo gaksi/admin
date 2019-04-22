@@ -1,17 +1,16 @@
 <template>
   <div>
-    <h3 class="tit-con-box">공지사항</h3>
     <div class="notice-write">
       <div class="form-group">
-        <h4>고정 순서</h4>
+        <h3>고정 순서</h3>
         <p>{{ doneNoticeOne.fix_num }}</p>
       </div>
       <div class="form-group">
-        <h4>제목</h4>
+        <h3>제목</h3>
         <p>{{ doneNoticeOne.title }}</p>
       </div>
       <div class="form-group">
-        <h4>내용</h4>
+        <h3>내용</h3>
         <div class="content-show" v-html="doneNoticeOne.content"></div>
       </div>
       <div class="btn-box">

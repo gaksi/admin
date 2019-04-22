@@ -1,39 +1,39 @@
 <template>
   <div>
-    <h3 class="tit-con-box">공자사항 목록</h3>
+    <button type="button" @click="addMode"
+            class="btn-basic btn-right btn-notice-write">
+      <i class="xi-pen"></i> 등록 </button>
     <table class="tb-normal">
       <colgroup>
-        <col width="60px">
-        <col width="80px">
+        <col width="50px">
+        <col width="140px">
         <col width="*">
-        <col width="150px">
+        <col width="110px">
+        <col width="60px">
       </colgroup>
       <thead>
       <tr>
-        <th>구분</th>
-        <th>고정</th>
+        <th>번호</th>
+        <th>등록자</th>
         <th>제목</th>
-        <th>날짜</th>
+        <th>등록일자</th>
+        <th>조횟수</th>
       </tr>
       </thead>
       <tbody class="notice-tbody">
         <tr v-for="list in notices" :key="list.id">
           <td>{{ list.id }}</td>
-          <td>{{ list.fix_num }} 번째</td>
+          <td>deong rok ja</td>
           <td><p class="limit-width">
             <button type="button" @click="navigate(list.id)">
             {{ list.title }}
             </button>
           </p></td>
           <td>{{ list.notice_time }}</td>
+          <td>999</td>
         </tr>
       </tbody>
     </table>
-    <div class="btn-box-big">
-      <button type="button" @click="addMode"
-                   class="btn-basic-big btn-notice-write">
-        글쓰기 </button>
-    </div>
   </div>
 </template>
 

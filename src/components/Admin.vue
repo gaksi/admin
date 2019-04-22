@@ -42,6 +42,11 @@ export default {
 </script>
 
 <style>
+  .path {
+    font-size: 14px; text-align:right;
+    position:absolute; top:45px; right:44px;
+  }
+  .xi-angle-right-min { color:#adb5bd }
   .flip-enter-active {
     transition: all .3s ease-in-out;
   }
@@ -71,24 +76,25 @@ export default {
   .content-layout-in {
     width: 100%; padding:20px 44px 0;
     margin-right: auto; margin-left: auto;
+    position:relative;
   }
   .page-header { position:relative; }
   .tit-con-layout {
-    font-size: 20px; line-height: 85px; font-weight:700
+    font-size: 20px; line-height: 65px; font-weight:700
   }
   .logout {
     position:absolute; top:20px; right:40px;
   }
 
   .content-box {
-    padding:2.8% 4%; min-width:900px;
+    padding:70px 50px 45px; min-width:900px;
     -webkit-box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
     box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
     margin-bottom: 30px; background-color:#fff;
-    overflow:hidden
+    overflow:hidden;  position:relative
   }
   .tit-con-box {
-    font-size:16px; margin-bottom: 30px; font-weight:700;
+    font-size:16px; margin-bottom: 25px; font-weight:700;
     margin-left:-10px;
   }
 
@@ -149,7 +155,7 @@ export default {
   }
   .tb-normal {
     width: 100%; border-collapse: collapse;
-    text-align: center; margin-bottom: 30px;
+    text-align: center;
     border-top: 1px solid #e3eaef;
     background-color: #fff;
   }
@@ -178,7 +184,7 @@ export default {
 
   /* TABLE 2 */
   .form-group { margin-bottom: 26px; }
-  .form-group h4 { margin-bottom: 9px; font-weight:600; font-size:14px; }
+  .form-group h3 { margin-bottom: 9px; font-weight:600; font-size:14px; }
   .form-group input[type="radio"] { margin-left:15px; }
   .form-group input[type="radio"]:first-of-type { margin-left:0; }
   .divided > div { display:inline-block; margin-right:50px; }
@@ -192,19 +198,15 @@ export default {
 
   /* button */
   .btn-box {
-    padding:25px 0 5px; margin-left:1px; border-top:1px solid #e3eaef;
+    padding:25px 0 5px; margin:70px 0 0 1px; border-top:1px solid #e3eaef;
     text-align: right;
-  }
-  .btn-box-big {
-    padding:25px 0 5px; margin-left:1px; border-top:1px solid #e3eaef;
-    text-align: center
   }
   .btn-box > a { margin-left:5px; }
 
   .btn-box input, .btn-box button { display:inline-block; margin-left:5px; }
   .btn-box a:first-child { margin-left:0; }
   .btn-basic {
-    padding: 5px 18px 7px; border-radius:3px; font-weight:600;
+    padding: 4px 18px; border-radius:3px; font-weight:600;
     border:1px solid #4d7fee; background-color:#4d7fee; color:#fff;
     box-shadow: 0 2px 6px 0 rgba(77, 127, 238, 0.5); font-size:13px;
     line-height:21px; display:inline-block;
@@ -214,7 +216,7 @@ export default {
     color:#4d7fee; background-color:#fff;
   }
   .btn-delete {
-    padding: 5px 16px 7px; border-radius:3px; font-weight:600;
+    padding: 4px 16px; border-radius:3px; font-weight:600;
     border:1px solid #ff5555;  color:#fff;
     box-shadow: 0 2px 6px 0 rgba(255, 85, 85, 0.46); font-size:13px;
     line-height:21px; display:inline-block; background-color:#ff5555;
@@ -224,7 +226,7 @@ export default {
     color:#ff5555; background-color:#fff;
   }
   .btn-done {
-    padding: 6px 17px 7px; border-radius:3px; font-weight:600;
+    padding: 4px 17px; border-radius:3px; font-weight:600;
     border:1px solid #34a3cc;  color:#fff;
     box-shadow: 0 2px 6px 0  rgba(57,175,209,.5); font-size:13px;
     line-height:21px; display:inline-block; background-color:#34a3cc;
@@ -233,17 +235,8 @@ export default {
     border:1px solid #34a3cc;
     color:#34a3cc; background-color:#fff;
   }
-  .btn-basic-big {
-    padding: 8px 0 10px; width: 190px; text-align: center;
-    border-radius: 3px; font-weight: 600; border: 1px solid #4d7fee;
-    background-color: #4d7fee; color: #fff;
-    -webkit-box-shadow: 0 2px 6px 0 rgba(77, 127, 238, 0.5);
-    box-shadow: 0 2px 6px 0 rgba(77, 127, 238, 0.5);
-    font-size: 14px; line-height: 21px; display: inline-block;
-  }
-  .btn-basic-big:hover {
-    border:1px solid #4d7fee;
-    color:#4d7fee; background-color:#fff;
+  .btn-right {
+    position:absolute; right:50px; top:30px;
   }
 
   div.btn-submit {
@@ -266,7 +259,7 @@ export default {
   /* ICON */
   .xi-list { margin-left: -5px; margin-right: 2px; vertical-align:baseline; font-size:15px; }
   .xi-trash-o { margin-left: -5px; margin-right: 2px; vertical-align:baseline; font-size:15px; }
-  .xi-pen { margin-left: -5px; margin-right: 2px; vertical-align:baseline; font-size:13px; }
+  .xi-pen { margin-left: -5px; margin-right: 5px; vertical-align:baseline; font-size:13px; }
   .xi-check { margin-left: -5px; margin-right: 5px; vertical-align:baseline; font-size:13px; }
   .xi-unlock-o { margin-left: -5px; margin-right: 2px; vertical-align:baseline; font-size:13px; }
 
