@@ -43,16 +43,17 @@ export default {
         })
     },
     SignIn () {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(
-          (user) => {
-            this.$router.push('/admin')
-            console.log('login success')
-          })
-        .catch((error) => {
-          console.log(error)
+      firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+        .then(() => {
+          return firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+        })
+        .then(user => {
+          console.log(user)
+          this.$router.push('/admin')
+          console.log('login success')
+        })
+        .catch(function(error) {
+          console.error(error)
         })
     }
   }
