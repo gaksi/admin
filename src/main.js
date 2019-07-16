@@ -6,8 +6,12 @@ import ES6Promise from 'es6-promise'
 import axios from 'axios'
 import * as ModalDialogs from 'vue-modal-dialogs'
 
+import 'firebase'
+import { firestorePlugin } from 'vuefire'
+
 Vue.use(router)
 Vue.use(ModalDialogs)
+Vue.use(firestorePlugin)
 
 ES6Promise.polyfill()
 Vue.prototype.$axios = axios
