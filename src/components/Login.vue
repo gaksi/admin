@@ -10,8 +10,8 @@
         <i class="xi-profile icon-login"></i>
         <h1 class="tit-login"> SIGN IN </h1>
         <div class="log-form">
-          <input type="text" placeholder="ID" v-model="email" class="ip-01">
-          <input type="password" placeholder="PASSWORD" v-model="password" class="ip-01">
+          <input type="email" placeholder="ID" v-model="email"  @keyup.enter="SignIn" class="ip-01">
+          <input type="password" placeholder="PASSWORD" @keyup.enter="SignIn" v-model="password" class="ip-01">
           <div class="login-btn-box">
             <input type="submit" value="LOG IN" class="btn-login" @click="SignIn">
             <input type="submit" value="SIGN UP" class="signup" @click="SignUp">
@@ -55,6 +55,7 @@ export default {
         })
         .catch(function(error) {
           console.error(error)
+          alert(error)
         })
     }
   }
