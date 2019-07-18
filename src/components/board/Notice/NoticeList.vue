@@ -21,6 +21,17 @@
       </tr>
       </thead>
       <tbody class="notice-tbody">
+        <tr v-for="noti in notices2" :key="noti.id">
+          <td>{{ noti.id }}</td>
+          <td>{{ noti.name }}</td>
+          <td><p class="limit-width">
+            <button type="button" @click="navigate(noti.id)">
+              {{ noti.title }}
+            </button>
+          </p></td>
+          <td>{{ noti.date }}</td>
+          <td>{{ noti.hits }}</td>
+        </tr>
         <tr v-for="list in notices" :key="list.id">
           <td>{{ list.id }}</td>
           <td>deong rok ja</td>
@@ -41,6 +52,7 @@
 import CONF from '@/Config'
 import axios from 'axios'
 import moment from 'moment'
+import { db } from '../../../firebase.js'
 
 export default {
   name: 'Notice',
@@ -48,8 +60,12 @@ export default {
     return {
       noticeList: {
         pageno: 0, pagesize: CONF.PAGESIZE, totalcount: 0, notices: []
-      }
+      },
+      notices2: []
     }
+  },
+  firestore: {
+    notices2: db.collection('notice')
   },
   created () {
     axios.post(CONF.FETCH_NOTICE, {

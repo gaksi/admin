@@ -12,9 +12,9 @@
         <div class="log-form">
           <input type="text" placeholder="ID" v-model="email" class="ip-01">
           <input type="password" placeholder="PASSWORD" v-model="password" class="ip-01">
-          <div class="btn-box">
-            <input type="submit" value="SIGN UP" class="btn-login" @click="SignUp">
+          <div class="login-btn-box">
             <input type="submit" value="LOG IN" class="btn-login" @click="SignIn">
+            <input type="submit" value="SIGN UP" class="signup" @click="SignUp">
           </div>
         </div>
       </div>
@@ -24,6 +24,7 @@
 <script>
 
 import firebase from 'firebase'
+
 export default {
   name: 'AppHome',
   data () {
@@ -59,17 +60,17 @@ export default {
   }
 }
 
-// Initialize Firebase
-var config = {
-  apiKey: 'AIzaSyCKw7wtCj4NvxFJCQeCrs-T7nC8alhDfKk',
-  authDomain: 'admin-rightaway.firebaseapp.com',
-  databaseURL: 'https://admin-rightaway.firebaseio.com',
-  projectId: 'admin-rightaway',
-  storageBucket: 'admin-rightaway.appspot.com',
-  messagingSenderId: '919370117474'
-}
-
-firebase.initializeApp(config)
+// // Initialize Firebase
+// var config = {
+//   apiKey: 'AIzaSyCKw7wtCj4NvxFJCQeCrs-T7nC8alhDfKk',
+//   authDomain: 'admin-rightaway.firebaseapp.com',
+//   databaseURL: 'https://admin-rightaway.firebaseio.com',
+//   projectId: 'admin-rightaway',
+//   storageBucket: 'admin-rightaway.appspot.com',
+//   messagingSenderId: '919370117474'
+// }
+//
+// firebase.initializeApp(config)
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
@@ -137,9 +138,13 @@ firebase.initializeApp(config)
        font-weight: 400; line-height: 1.5;
        background-color: #fff;
      }
+  .login-btn-box {
+    padding: 0; margin:20px 0 0; border-top:1px solid #e3eaef;
+    text-align: right;
+  }
   .btn-login {
-    width:49%; border-radius:5px; background-color:#4d7fee;
-    color:#fff; padding:12px 0; text-align:center; margin-top:10px;
+    border-radius:5px; background-color:#4d7fee; display:block;
+    width: 100%;  color:#fff; padding:12px 0; text-align:center; margin-top:10px;
     cursor:pointer; font-size:15px; font-weight:600; margin-left:2%;
     border:1px solid #4d7fee; box-shadow: 0 2px 6px 0 rgba(77, 127, 238, 0.5);
   }
@@ -150,4 +155,5 @@ firebase.initializeApp(config)
     border:1px solid #4d7fee; background-color:#fff;
     color:#4d7fee
   }
+  .signup { color:#5d70f1; padding: 10px 0 10px 10px; background-color:transparent}
 </style>
