@@ -25,7 +25,7 @@
           <td>{{ noti.id }}</td>
           <td>{{ noti.name }}</td>
           <td><p class="limit-width">
-            <button type="button" @click="navigate(noti.id)">
+            <button type="button" @click="navigate(noti.num)">
               {{ noti.title }}
             </button>
           </p></td>
@@ -52,7 +52,7 @@
 import CONF from '@/Config'
 import axios from 'axios'
 import moment from 'moment'
-import { db } from '../../../firebase.js'
+import { db } from '@/firebase.js'
 
 export default {
   name: 'Notice',
@@ -68,6 +68,7 @@ export default {
     notices2: db.collection('notice')
   },
   created () {
+    console.log(this.notices2)
     axios.post(CONF.FETCH_NOTICE, {
       page: this.noticeList.pageno
     }).then((response) => {
