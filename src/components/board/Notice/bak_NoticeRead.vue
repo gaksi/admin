@@ -59,6 +59,10 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+import CONF from '@/Config'
+//import moment from 'moment'
 import { create } from 'vue-modal-dialogs'
 import AppDialog from '@/components/dialog/AppDialog'
 import { db } from '@/firebase.js'
@@ -72,6 +76,7 @@ export default {
     return {
       no: this.$route.params.no,
       num: 101,
+     // notice: { id: 0, title: '', content: '', fix_num: -1, notice_time: 0 },
       notice2: []
     }
   },
@@ -79,6 +84,17 @@ export default {
     notice2: db.collection('notice')
   },
   computed: {
+/*    doneNoticeOne: function () {
+      const timestemp = this.notice.notice_time * 1000
+      const date = new Date(timestemp)
+      return {
+        id: this.notice.id,
+        title: unescape(this.notice.title),
+        content: unescape(this.notice.content),
+        fix_num: this.notice.fix_num,
+        notice_time: moment(date).format('YY-MM-DD')
+      }
+    },*/
     doneNoticeOne2: function () {
       return this.notice2.filter((item, index) => {
         console.log(this.notice2[index].num)
@@ -86,6 +102,15 @@ export default {
         return item.num === String(this.num)
       })
     }
+  },
+  created () {
+/*    axios.post(CONF.FETCH_ONE_NOTICE, {
+      id: this.no
+    }).then((response) => {
+      this.notice = response.data.resData[0]
+    }).catch((err) => {
+      console.log(err)
+    })*/
   },
   methods: {
 /*    deleteNotice: function () {

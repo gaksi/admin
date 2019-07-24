@@ -3,13 +3,22 @@
     <div class="notice-write">
       <div class="clearfix divided">
         <div class="form-group">
-          <h3><label for="notice-title">제목</label></h3>
-          <input type="text" id="notice-title" class="inp-text2" v-model="notice.title">
+          <h3><label for="index">고정 여부</label></h3>
+          <input type="radio" id="isFix" name="fix" value="fix" v-model="fixed">
+          <label for="isFix">고정 </label>
+          <input type="radio" id="nonFix" name="fix" value="nonfix" checked v-model="fixed">
+          <label for="nonFix"> 고정 안 함 </label>
         </div>
         <div class="form-group">
-          <h3><label for="notice-name">작성자</label></h3>
-          <input type="text" id="notice-name" class="inp-text2" v-model="notice.name">
+          <h3><label for="index">고정 순서</label></h3>
+          <input type="text" id="index" class="inp-text-s" maxlength="3" :disabled="disabled"
+                 v-model="notice.fix_num">
+          (0~N 숫자만 써주세요)
         </div>
+      </div>
+      <div class="form-group">
+        <h3><label for="notice-title">제목</label></h3>
+        <input type="text" id="notice-title" class="inp-text2" v-model="notice.title">
       </div>
       <div class="form-group">
         <h3><label for="notice-contents">내용</label></h3>
@@ -46,9 +55,10 @@ export default {
   ],
   data () {
     return {
+      fixed: 'nonfix',
       no: this.$route.query.no,
       mode: this.$route.query.mode,
-      notice: { id: 0, name: '', title: '', content: '', notice_time: 0 },
+      notice: { id: 0, title: '', content: '', fix_num: -1, notice_time: 0 },
       customToolbar: [
         ['bold', 'underline'],
         [{ 'color': [] }], [ 'link' ]
@@ -77,7 +87,7 @@ export default {
           notice_time: moment(date).format('YY-MM-DD')
         }
       } else {
-        return { num: 0, title: '', content: '', name: -1, date: 0 }
+        return { id: 0, title: '', content: '', fix_num: -1, notice_time: 0 }
       }
     },
     disabled: function () {
@@ -114,32 +124,24 @@ export default {
         this.$router.push({ name: 'NoticeList' })
       } else {
         console.log('add NOtice 실행' + this.notice)
-        // const noticeIn = {
-        //   title: escape(this.notice.title),
-        //   content: escape(this.notice.content),
-        //   fix_num: this.notice.fix_num
-        // }
-        // console.log('보내는 내용은')
-        // console.log(noticeIn)
-        // axios.post(CONF.ADD_NOTICE, noticeIn)
-        //   .then((response) => {
-        //     if (response.data.status === 'success') {
-        //       console.log(response.data.resData.insertId)
-        //     } else {
-        //       console.log(response.data)
-        //     }
-        //   })
-        //   .catch((err) => {
-        //     console.log(err)
-        //   })
-        const noticeIn2 = {
-          title: this.notice.title,
-          name: this.notice.name,
-          content: this.notice.content
+        const noticeIn = {
+          title: escape(this.notice.title),
+          content: escape(this.notice.content),
+          fix_num: this.notice.fix_num
         }
-        console.log(noticeIn2)
-       db.collection('notice').add(noticeIn2)
-
+        console.log('보내는 내용은')
+        console.log(noticeIn)
+        axios.post(CONF.ADD_NOTICE, noticeIn)
+          .then((response) => {
+            if (response.data.status === 'success') {
+              console.log(response.data.resData.insertId)
+            } else {
+              console.log(response.data)
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          })
         this.$router.push({ name: 'NoticeList' })
       }
     }
