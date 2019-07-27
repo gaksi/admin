@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click="click" style="width: 300px;"> 버튼 </button>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            dataitem1: 1
+        },
+        computed: {
+            computeditem1: 'computeditem1',
+            com2:  function(){
+                console.log(this.dataitem1)
+                console.log(this.computeditem1)
+                this.dataitem1 ++
+            }
+        },
+        created: function() {
+            var a = {
+                b: function() {
+                    console.log(this)
+                }
+            };
+
+            console.log(this.dataitem1);
+            a.b()
+        },
+        mounted() {
+          console.log(this)
+            function add () {
+              console.log('add')
+              console.log(this)
+            }
+            add()
+        },
+        methods: {
+            click:function(){
+                this.dataitem1 ++
+            }
+        }
+    })
+</script>
+</body>
+</html>
