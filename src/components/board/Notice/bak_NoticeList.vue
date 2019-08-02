@@ -32,23 +32,61 @@
           <td>{{ noti.date }}</td>
           <td>{{ noti.hits }}</td>
         </tr>
+        <tr v-for="list in notices" :key="list.id">
+          <td>{{ list.id }}</td>
+          <td>deong rok ja</td>
+          <td><p class="limit-width">
+            <button type="button" @click="navigate(list.id)">
+            {{ list.title }}
+            </button>
+          </p></td>
+          <td>{{ list.notice_time }}</td>
+          <td>999</td>
+        </tr>
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
+import CONF from '@/Config'
+import axios from 'axios'
+import moment from 'moment'
 import { db } from '@/firebase.js'
 
 export default {
   name: 'Notice',
   data () {
     return {
+      noticeList: {
+        pageno: 0, pagesize: CONF.PAGESIZE, totalcount: 0, notices: []
+      },
       notices2: []
     }
   },
   firestore: {
     notices2: db.collection('notice')
+  },
+  created () {
+    console.log(this.notices2)
+    axios.post(CONF.FETCH_NOTICE, {
+      page: this.noticeList.pageno
+    }).then((response) => {
+      this.noticeList.notices = response.data.resData
+    }).catch((err) => {
+      console.log(err)
+    })
+  },
+  computed: {
+    notices: function () {
+      this.noticeList.notices.forEach((item) => {
+        item.title = unescape(item.title)
+        const timestemp = item.notice_time * 1000
+        const date = new Date(timestemp)
+        item.notice_time = moment(date).format('YY-MM-DD')
+      })
+      return this.noticeList.notices
+    }
   },
   methods: {
     navigate (no) {

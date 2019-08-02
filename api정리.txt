@@ -1,4 +1,4 @@
-﻿# @공지사항
+﻿ @공지사항
 
 ## * 필독 : HTML 코드를 가공없이 서버로 던지면 데이터 베이스 쿼리 문과 에러가 발생함.  따라서 escape unescape 또는 encodeURIComponent decodeURIComponent 등을 이용해서 특수문자를 제거해줘야 함.
 

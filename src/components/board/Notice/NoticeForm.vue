@@ -30,9 +30,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-import CONF from '@/Config'
-import moment from 'moment'
 import { VueEditor } from 'vue2-editor'
 import { db } from '@/firebase.js'
 
@@ -61,85 +58,21 @@ export default {
       this.notice = this.item
     }
   },
-  computed: {
-    doneNoticeOne: function () {
-      if (this.mode === 'edit') {
-        const timestemp = this.notice.notice_time * 1000
-        const date = new Date(timestemp)
-        this.notice.title = unescape(this.notice.title)
-        this.notice.content = unescape(this.notice.content)
-        this.notice.notice_time = moment(date).format('YY-MM-DD')
-        return {
-          id: this.notice.id,
-          title: unescape(this.notice.title),
-          content: unescape(this.notice.content),
-          fix_num: this.notice.fix_num,
-          notice_time: moment(date).format('YY-MM-DD')
-        }
-      } else {
-        return { num: 0, title: '', content: '', name: -1, date: 0 }
-      }
-    },
-    disabled: function () {
-      return this.fixed !== 'fix'
-    },
-    fix_num: function () {
-      console.log(this.fixed)
-      if (this.fixed !== 'fix') {
-        return 0
-      } else {
-        return this.fixed
-      }
-    }
-  },
+
   methods: {
     submitEvent () {
       if (this.mode === 'edit') {
-        axios.post(CONF.EDIT_NOTICE, {
-          id: this.notice.id,
-          title: this.notice.title,
-          content: this.notice.content,
-          fix_num: this.notice.fix_num
-        })
-          .then((response) => {
-            if (response.data.status === 'success') {
-              console.log(response.data.status)
-            } else {
-              console.log(response.data)
-            }
-          })
-          .catch((err) => {
-            console.log(err)
-          })
         this.$router.push({ name: 'NoticeList' })
       } else {
         console.log('add NOtice 실행' + this.notice)
-        // const noticeIn = {
-        //   title: escape(this.notice.title),
-        //   content: escape(this.notice.content),
-        //   fix_num: this.notice.fix_num
-        // }
-        // console.log('보내는 내용은')
-        // console.log(noticeIn)
-        // axios.post(CONF.ADD_NOTICE, noticeIn)
-        //   .then((response) => {
-        //     if (response.data.status === 'success') {
-        //       console.log(response.data.resData.insertId)
-        //     } else {
-        //       console.log(response.data)
-        //     }
-        //   })
-        //   .catch((err) => {
-        //     console.log(err)
-        //   })
         const noticeIn2 = {
           title: this.notice.title,
           name: this.notice.name,
-          content: this.notice.content
+          content: this.notice.content,
+          num: new Date()
         }
         console.log(noticeIn2)
-       db.collection('notice').add(noticeIn2)
-
+        db.collection('notice').add(noticeIn2)
         this.$router.push({ name: 'NoticeList' })
       }
     }
