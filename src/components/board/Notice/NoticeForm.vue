@@ -43,7 +43,7 @@ export default {
   ],
   data () {
     return {
-      no: this.$route.query.no,
+      id: this.$route.query.no,
       mode: this.$route.query.mode,
       notice: { id: 0, name: '', title: '', content: '', notice_time: 0 },
       customToolbar: [

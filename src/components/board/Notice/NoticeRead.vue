@@ -3,23 +3,19 @@
     <div class="notice-write">
       <div class="form-group">
         <h3>제목</h3>
-        <p>{{ doneNoticeOne2[0].title }}</p>
+        <p>{{notice.title }}</p>
       </div>
       <div class="form-group">
         <h3>작성자</h3>
-        <p>{{ doneNoticeOne2[0].name }}</p>
-      </div>
-      <div class="form-group">
-        <h3>조회수</h3>
-        <p>{{ doneNoticeOne2[0].hits }}</p>
+        <p>{{notice.name }}</p>
       </div>
       <div class="form-group">
         <h3>작성일</h3>
-        <p>{{ doneNoticeOne2[0].date }}</p>
+        <p>{{notice.date }}</p>
       </div>
       <div class="form-group">
         <h3>내용</h3>
-        <div class="content-show" v-text="doneNoticeOne2[0].content"></div>
+        <div class="content-show">{{notice.content}}</div>
       </div>
       <div class="btn-box">
         <router-link :to="{ name:'NoticeList' }"
@@ -43,28 +39,44 @@ import { db } from '@/firebase.js'
 const confirmDelete = create(AppDialog, 'title', 'description')
 // const confirmDelete2 = create(AppDialog)
 
+
+
 export default {
   name: 'NoticeForm',
   data () {
     return {
-      no: this.$route.params.no,
-      num: 0,
-      notice2: [0, { title: '', num: '', content: '', hits: 0, date: '', name: '' }]
+      num: this.$route.params.no,
+      notice: { title: '', content: '', date: '', name: '' }
     }
   },
-  firestore: {
-    notice2: db.collection('notice')
-  },
-  computed: {
-    doneNoticeOne2: function () {
-      console.log(this.notice2)
-      return this.notice2.filter((item, index) => {
-        return item.num === String(this.num)
+  created () {
+    var docRef = db.collection('notice').doc(this.$route.params.no)
+    let vm = this
+    docRef.get().then(function (doc) {
+      if (doc.exists) {
+        console.log(doc.data())
+        vm.notice = doc.data()
+      } else {
+        // doc.data() will be undefined in this case
+        console.log('No such document!')
+      }
+    }).catch(function (error) {
+      console.log('Error getting document:', error)
+    })
+    console.log(this.notice)
+
+},
+/*  firestore: {
+    notice: db.collection('notice')
+      .doc('8X59UVeetMa5rPwDplAQ')
+      .get()
+      .then(snapshot => {
+        return snapshot.data()
+        // do something with document
       })
-    }
-  },
+  },*/
   methods: {
-/*    deleteNotice: function () {
+    /*    deleteNotice: function () {
       confirmDelete('Delete notice', 'Are you sure you want to delete...?').then(yes => {
         if (yes) {
           axios.post(CONF.DELETE_NOTICE, {
@@ -79,8 +91,8 @@ export default {
       })
     },*/
     editMode () {
-      this.$router.push({ name: 'NoticeForm', query: { mode: 'edit', no: this.no },
-        params: { item: this.doneNoticeOne } })
+      this.$router.push({ name: 'NoticeForm', query: { mode: 'edit', no: this.id },
+        params: { item: this.doneNoticeOne2 } })
     }
   }
 }

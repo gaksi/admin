@@ -87,7 +87,7 @@ export default {
   }
 
   .content-box {
-    padding:70px 50px 45px; min-width:900px;
+    padding:70px 50px 45px;  width:100%;
     -webkit-box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
     box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
     margin-bottom: 30px; background-color:#fff;
