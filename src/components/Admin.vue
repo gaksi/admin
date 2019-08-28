@@ -3,7 +3,7 @@
     <app-nav />
     <div class="content-layout">
       <header>
-        <h1>RightAway Admin Page</h1>
+        <h1>Admin Page <span class="add"> - firebase를 이용한 CRUD 샘플. <strong>공지사항 관리 메뉴</strong>만 샘플로서 활성화 되어 있습니다. </span></h1>
         <!-- https://github.com/vuejs/vue-router/issues/800 -->
         <router-link :to="{ name: 'Login' }" class="logout btn-basic" @click.native="logout">
           <i class="xi-unlock-o"></i> Logout</router-link>
@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style>
+  .add { font-size:13px; font-weight:400; color:rebeccapurple}
   .path {
     font-size: 14px; text-align:right;
     position:absolute; top:45px; right:44px;

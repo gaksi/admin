@@ -32,6 +32,7 @@
 <script>
 import { VueEditor } from 'vue2-editor'
 import { db } from '@/firebase.js'
+import moment from 'moment'
 
 export default {
   name: 'NoticeForm',
@@ -62,16 +63,21 @@ export default {
   methods: {
     submitEvent () {
       if (this.mode === 'edit') {
+        const noticeIn2 = {
+          title: this.notice.title,
+          name: this.notice.name,
+          content: this.notice.content
+        }
+        // 내용 수정하기
+        db.collection('notice').doc(this.id).update(noticeIn2)
         this.$router.push({ name: 'NoticeList' })
       } else {
-        console.log('add NOtice 실행' + this.notice)
         const noticeIn2 = {
           title: this.notice.title,
           name: this.notice.name,
           content: this.notice.content,
-          num: new Date()
+          date: moment().unix() * 1000
         }
-        console.log(noticeIn2)
         db.collection('notice').add(noticeIn2)
         this.$router.push({ name: 'NoticeList' })
       }

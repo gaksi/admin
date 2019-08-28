@@ -17,7 +17,7 @@
       </tr>
       </thead>
       <tbody class="notice-tbody">
-        <tr v-for="noti in notices2" :key="noti.id">
+        <tr v-for="noti in noticeOrdered" :key="noti.id">
           <td>{{ noti.name }}</td>
           <td><p class="limit-width">
             <button type="button" @click="navigate(noti.id)">
@@ -33,7 +33,7 @@
 
 <script>
 import { db } from '@/firebase.js'
-
+import moment from 'moment'
 export default {
   name: 'Notice',
   data () {
@@ -43,6 +43,21 @@ export default {
   },
   firestore: {
     notices2: db.collection('notice')
+      .orderBy('date')
+  },
+  computed: {
+    noticeOrdered: function () {
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      const ordered = this.notices2.reverse()
+      return ordered.map(function (item) {
+        return {
+          title: item.title,
+          name: item.name,
+          date: moment(item.date).format('YYYY-MM-DD'),
+          id: item.id
+        }
+      })
+    }
   },
   methods: {
     navigate (no) {
