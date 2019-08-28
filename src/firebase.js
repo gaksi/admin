@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase'
+import 'firebase/app'
 import 'firebase/firestore'
 
 // Initialize Firebase
