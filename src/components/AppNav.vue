@@ -4,7 +4,7 @@
       <img src="../assets/star.png" alt="" v-for="n in 20" :class="{['star'+n]: true}" :key="n">
     </div>
     <router-link :to="{ name: 'Admin' }" class="logo">
-      <img src="../assets/adminLogo.png" alt="오늘당장 로고">
+      <img src="../assets/adminLogo.png" alt="오늘당장 로고" :key="1">
     </router-link>
     <nav-items
       :items="navItems" />
