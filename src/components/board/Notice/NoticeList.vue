@@ -32,6 +32,9 @@
 </template>
 
 <script>
+import * as firebase from 'firebase/app'
+import 'firebase/<PACKAGE>'
+import 'firebase/firestore'
 import { db } from '@/firebase.js'
 import moment from 'moment'
 export default {
