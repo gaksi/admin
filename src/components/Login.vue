@@ -3,8 +3,8 @@
     <div class="log-layout clearfix">
       <div class="left-box">
         <div class="light1"></div> <div class="light2"></div>
-        <img src="../assets/logo.png" alt="">
-        <img src="../assets/logo.png" alt="" class="ani-img">
+        <img src="../assets/adminLogo.png" alt="">
+        <img src="../assets/adminLogo.png" alt="" class="ani-img">
       </div>
       <div class="right-box">
         <i class="xi-profile icon-login"></i>
