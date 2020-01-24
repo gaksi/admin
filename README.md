@@ -8,8 +8,10 @@ firebase를 사용하여<br>
 
 - 공지사항 부분만 활성화되어 있습니다 <br>
 <br><br>
+
+
+호스팅 페이지 : http://kimsuyeon.co.kr/login 
 로그인 아이디 : admin@admin.com <br>
 로그인 패스워드 : 123456
 
-http://kimsuyeon.co.kr/login (호스팅 페이지)
 
