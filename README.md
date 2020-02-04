@@ -18,15 +18,18 @@ firebase를 사용하여<br>
 ![admin01](https://user-images.githubusercontent.com/51283405/73731733-58d39700-477c-11ea-8ae7-f336765f3a2e.PNG)
 
 
-
+<br>
 ### 글 목록 페이지
 ![admin02](https://user-images.githubusercontent.com/51283405/73734948-cf26c800-4781-11ea-9706-3a953cf765ad.PNG)
-
+<br>
+<br>
 ### 글 보기 페이지
 ![admin03](https://user-images.githubusercontent.com/51283405/73734952-d0f08b80-4781-11ea-9637-8e92446e1b31.PNG)
-
+<br>
+<br>
 ### 글 수정 페이지
 ![admin04](https://user-images.githubusercontent.com/51283405/73734955-d221b880-4781-11ea-97d8-d12c1e17f69f.PNG)
-
+<br>
+<br>
 ### 글 작성 페이지
 ![admin05](https://user-images.githubusercontent.com/51283405/73734962-d3eb7c00-4781-11ea-9f21-7187c91a7dd8.PNG)
