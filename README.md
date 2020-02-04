@@ -21,10 +21,10 @@ firebase를 사용하여<br>
 로그인 패스워드 : 123456
 
 
-![admin02](https://user-images.githubusercontent.com/51283405/73732506-a0a6ee00-477d-11ea-88c5-723ae7d40559.PNG)
+![admin02](https://user-images.githubusercontent.com/51283405/73734948-cf26c800-4781-11ea-9706-3a953cf765ad.PNG)
 
-![admin03](https://user-images.githubusercontent.com/51283405/73732534-abfa1980-477d-11ea-8730-ea662178d1e5.PNG)
+![admin03](https://user-images.githubusercontent.com/51283405/73734952-d0f08b80-4781-11ea-9637-8e92446e1b31.PNG)
 
-![admin04](https://user-images.githubusercontent.com/51283405/73732545-b2889100-477d-11ea-90c9-5274be49b498.PNG)
+![admin04](https://user-images.githubusercontent.com/51283405/73734955-d221b880-4781-11ea-97d8-d12c1e17f69f.PNG)
 
-![admin05](https://user-images.githubusercontent.com/51283405/73732564-bae0cc00-477d-11ea-8c48-3132f6f35ccf.PNG)
+![admin05](https://user-images.githubusercontent.com/51283405/73734962-d3eb7c00-4781-11ea-9f21-7187c91a7dd8.PNG)
